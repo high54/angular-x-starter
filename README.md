@@ -1,5 +1,9 @@
 # Angular X Starter
 
+Le projet a pour but de proposer une structure de projet prête à l'emploi pour le développement d'application web, mobile et de bureau.
+
+La structure est découpée en deux sections : `Core` et `Modules`.
+
 - [Angular X Starter](#angular-x-starter)
   - [Core](#core)
   - [Modules](#modules)
@@ -16,10 +20,6 @@
   - [Running end-to-end tests](#running-end-to-end-tests)
   - [Further help](#further-help)
 
-
-Le projet a pour but de proposer une structure de projet prête à l'emploi pour le développement d'application web, mobile et de bureau.
-
-La structure est découpé en deux sections :
 
 ## Core
 
