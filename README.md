@@ -1,4 +1,9 @@
-# AngularXStarter
+# Angular X Starter
+
+Le projet à pour but de proposer une structure de projet prêt à l'emploie pour le développement d'application web, mobile et de bureau.
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
