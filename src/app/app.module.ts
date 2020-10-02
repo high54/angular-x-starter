@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 // UI Module
 import { UIModule } from './core/ui/ui.module';
+// Authentication Module
+import { AuthenticationModule } from './core/authentication/authentication.module';
 // Components
 import { AppComponent } from './app.component';
 @NgModule({
@@ -18,7 +20,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     AppMaterialModule,
-    UIModule
+    UIModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
