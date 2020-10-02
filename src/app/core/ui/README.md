@@ -1,6 +1,5 @@
 # User Interface Module
 
-Met en place le shield de l'application :
+Gestion des composants de l'interface utilisateur.
 
-- Footer
 
