@@ -1,8 +1,65 @@
 # Angular X Starter
 
-Le projet à pour but de proposer une structure de projet prêt à l'emploie pour le développement d'application web, mobile et de bureau.
+- [Angular X Starter](#angular-x-starter)
+  - [Core](#core)
+  - [Modules](#modules)
+- [Fonctionnalités](#fonctionnalités)
+  - [Server Side Rendering](#server-side-rendering)
+  - [Progressive Web App - PWA](#progressive-web-app---pwa)
+  - [Design Responsive](#design-responsive)
+  - [Online/offline synchronisation](#onlineoffline-synchronisation)
+- [Documentation technique](#documentation-technique)
+  - [Development server](#development-server)
+  - [Code scaffolding](#code-scaffolding)
+  - [Build](#build)
+  - [Running unit tests](#running-unit-tests)
+  - [Running end-to-end tests](#running-end-to-end-tests)
+  - [Further help](#further-help)
 
 
+Le projet a pour but de proposer une structure de projet prête à l'emploi pour le développement d'application web, mobile et de bureau.
+
+La structure est découpé en deux sections :
+
+## Core
+
+La section `Core` s'occupe de tout ce qui est chargé à la première connexion de l'utilisateur. Ainsi on retrouve toute les fonctionnalités néccaissaire au bon fonctionnement de l'application : interface utilisateur, synchronisation des données, authentification, configuration.
+
+## Modules
+
+La section `Modules` correspond à la partie métier de l'application. Toutes les fonctionnalités qui sont disponible dans `Modules` sont de préférence mise en lazy loading afin d'apporter à l'utilisateur uniquement ce qu'il souhaite consulter, sans pour autant surcharger le réseau. 
+
+Cela permet également d'ajouter une couche de sécurité supplémentaire en évitant que du code sensible ne soit transmit à un utilisateur n'ayant pas les droits.
+
+# Fonctionnalités
+
+## Server Side Rendering
+
+Pré compilation des pages pour un chargement plus rapide.
+Mise en cache des requêtes pour réduire les appelles au backend/web service.
+
+## Progressive Web App - PWA
+
+Application installable sur Smartphone et PC.
+Améliore la rapidité de chargement en installant l'interface utilisateur et les assets sur l'appareil.
+
+## Design Responsive
+
+Une seule application pour PC et Smatphone.
+
+## Online/offline synchronisation
+
+Mise en cache des requêtes en cas de coupure internet.
+Synchronisation avec le backend une fois la connexion rétablie.
+
+
+# Documentation technique
+
+|     Module     |                      Documentation                      |
+| :------------: | :-----------------------------------------------------: |
+| User Interface | [Consulter la documentation](src/app/core/ui/README.md) |
+|                |                                                         |
+|                |                                                         |
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
