@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Routes
 import { AppRoutingModule } from './app-routing.module';
+// Angular Material Module
+import { AppMaterialModule } from './app-material.module';
 // Components
 import { AppComponent } from './app.component';
 @NgModule({
@@ -11,8 +13,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
