@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
-
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-users-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
 export class UsersSignUpComponent implements OnInit {
+  public title = 'Sign in';
   public signUpForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -17,10 +18,22 @@ export class UsersSignUpComponent implements OnInit {
     notifications: [false]
   });
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private metaService: Meta,
+    private titleService: Title
   ) { }
 
   public ngOnInit(): void {
+    this.titleService.setTitle(this.title);
+    this.metaService.addTags([
+      { property: 'og:type', content: 'object' },
+      { property: 'og:site_name', content: 'Angular X Starter' },
+      { property: 'og:title', content: this.title },
+      { property: 'og:description', content: 'github.com/high54/angular-x-starter' },
+      { name: 'keywords', content: 'Angular, Universal, Example' },
+      { name: 'description', content: 'Angular X Starter' },
+      { name: 'robots', content: 'index, follow' }
+    ]);
   }
   public submitForm(): void {
     const { value, valid } = this.signUpForm;
