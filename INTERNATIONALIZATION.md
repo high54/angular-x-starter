@@ -7,6 +7,16 @@ Langues disponible :
 - en-US
 - fr-FR
 
+
+Les fichiers de traduction sont au format XLF, disponible dans le dossier `src/locale`.
+
+
+>
+> XLF est un format de fichier couramment utilisé par les entreprises et programmes de localisation pour traduire des chaînes de texte.
+>
+
+Vous pouvez utiliser [Un logiciel de traduction comme Wordfast Anywhere](https://www.freetm.com/anywhere.html) pour traduire gratuitement.
+
  Pour en savoir plus sur le fonctionnement veuillez consulter la
 [Documentation Angular - Internationalisation I18N](https://angular.io/guide/i18n)
 

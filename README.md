@@ -13,6 +13,7 @@ La structure est découpée en deux sections : `Core` et `Modules`.
   - [Design Responsive](#design-responsive)
   - [Online/Offline synchronisation](#onlineoffline-synchronisation)
   - [Internationalisation - I18N](#internationalisation---i18n)
+  - [Accessibilité - A11Y](#accessibilité---a11y)
   - [Continuous Integration / Continuous Delivery - Ci/CD](#continuous-integration--continuous-delivery---cicd)
 - [Documentation technique](#documentation-technique)
   - [Development server](#development-server)
@@ -61,6 +62,9 @@ Internationalisation des textes statique de l'application via @angular/localize 
 L'ensemble de texte statique sont extrait dans des fichiers déstiné aux logiciels professionnel de traduction.
 Cela comporte le texte à traduire et le contexte.
 
+## Accessibilité - A11Y
+
+Permettre aux personnes en situation de handicap de consulter en toute simplicité l'application.
 
 ## Continuous Integration / Continuous Delivery - Ci/CD
 
@@ -71,7 +75,6 @@ Cela comporte le texte à traduire et le contexte.
 |       User Interface        | [Consulter la documentation](src/app/core/ui/README.md) |
 | Internationalisation - I18N | [Consulter la documentation](/INTERNATIONALIZATION.md)  |
 |                             |                                                         |
-
 
 
 
