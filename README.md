@@ -14,7 +14,7 @@ La structure est découpée en deux sections : `Core` et `Modules`.
   - [Online/Offline synchronisation](#onlineoffline-synchronisation)
   - [Internationalisation - I18N](#internationalisation---i18n)
   - [Accessibilité - A11Y](#accessibilité---a11y)
-  - [Continuous Integration / Continuous Delivery - Ci/CD](#continuous-integration--continuous-delivery---cicd)
+  - [Continuous Integration / Continuous Delivery - CI/CD](#continuous-integration--continuous-delivery---cicd)
 - [Documentation technique](#documentation-technique)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
@@ -66,7 +66,7 @@ Cela comporte le texte à traduire et le contexte.
 
 Permettre aux personnes en situation de handicap de consulter en toute simplicité l'application.
 
-## Continuous Integration / Continuous Delivery - Ci/CD
+## Continuous Integration / Continuous Delivery - CI/CD
 
 # Documentation technique
 
