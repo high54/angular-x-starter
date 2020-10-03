@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="56fc3f08ef7130088df5f4c0bb54cc0542171a6c" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Redirect to the register page</note>
+        <note priority="1" from="meaning">site navigation</note>
+      </trans-unit>
+      <trans-unit id="d87dca70f690476b059b5b6599e2b0a0a011145d" datatype="html">
+        <source>Sign-in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Redirect to the sign-in page</note>
+        <note priority="1" from="meaning">site navigation</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
