@@ -26,7 +26,7 @@ La structure est découpée en deux sections : `Core` et `Modules`.
 
 ## Core
 
-La section `Core` s'occupe de tout ce qui est chargé à la première connexion de l'utilisateur. Ainsi on retrouve toutes les fonctionnalités néccaissaire au bon fonctionnement de l'application : interface utilisateur, synchronisation des données, authentification, configuration.
+La section `Core` s'occupe de tout ce qui est chargé à la première connexion de l'utilisateur. Ainsi on retrouve toutes les fonctionnalités néccessaire au bon fonctionnement de l'application : interface utilisateur, synchronisation des données, authentification, configuration.
 
 ## Modules
 
