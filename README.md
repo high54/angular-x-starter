@@ -8,10 +8,12 @@ La structure est découpée en deux sections : `Core` et `Modules`.
   - [Core](#core)
   - [Modules](#modules)
 - [Fonctionnalités](#fonctionnalités)
-  - [Server Side Rendering](#server-side-rendering)
+  - [Server Side Rendering - SSR](#server-side-rendering---ssr)
   - [Progressive Web App - PWA](#progressive-web-app---pwa)
   - [Design Responsive](#design-responsive)
-  - [Online/offline synchronisation](#onlineoffline-synchronisation)
+  - [Online/Offline synchronisation](#onlineoffline-synchronisation)
+  - [Internationalisation - I18N](#internationalisation---i18n)
+  - [Continuous Integration / Continuous Delivery - Ci/CD](#continuous-integration--continuous-delivery---cicd)
 - [Documentation technique](#documentation-technique)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
@@ -51,6 +53,10 @@ Une seule application pour PC et Smatphone.
 
 Mise en cache des requêtes en cas de coupure internet.
 Synchronisation avec le backend une fois la connexion rétablie.
+
+## Internationalisation - I18N
+
+Internationalisation des textes statique de l'application.
 
 ## Continuous Integration / Continuous Delivery - Ci/CD
 
