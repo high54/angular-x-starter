@@ -70,11 +70,12 @@ Permettre aux personnes en situation de handicap de consulter en toute simplicit
 
 # Documentation technique
 
-|           Module            |                      Documentation                      |
-| :-------------------------: | :-----------------------------------------------------: |
-|       User Interface        | [Consulter la documentation](src/app/core/ui/README.md) |
-| Internationalisation - I18N | [Consulter la documentation](/INTERNATIONALIZATION.md)  |
-|                             |                                                         |
+|           Module            |                         Documentation                         |
+| :-------------------------: | :-----------------------------------------------------------: |
+|       User Interface        |    [Consulter la documentation](src/app/core/ui/README.md)    |
+|            Users            | [Consulter la documentation](src/app/modules/users/README.md) |
+|                             |                                                               |
+| Internationalisation - I18N |    [Consulter la documentation](/INTERNATIONALIZATION.md)     |
 
 
 
