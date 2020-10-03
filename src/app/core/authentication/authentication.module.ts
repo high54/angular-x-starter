@@ -4,13 +4,17 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationMaterialModule } from './authentication-material.module';
 // Routes
 import { AuthenticationRoutingModule } from './authentication-routing.module';
+// Containers
+import * as fromContainers from './containers';
 @NgModule({
     imports: [
         CommonModule,
         AuthenticationMaterialModule,
         AuthenticationRoutingModule
     ],
-    declarations: [],
+    declarations: [
+        ...fromContainers.containers
+    ],
     providers: []
 })
 export class AuthenticationModule { }
