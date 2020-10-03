@@ -1,20 +1,33 @@
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title>Connexion</mat-card-title>
+        <mat-card-title i18n="Sign in page| Page title">
+            Sign in
+        </mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <mat-form-field class="form-field">
-            <mat-label>Identifiant</mat-label>
+            <mat-label i18n="Sign in page| Label login field">
+                Username or email
+            </mat-label>
             <input matInput type="text">
         </mat-form-field>
         <mat-form-field class="form-field">
-            <mat-label>Mot de passe</mat-label>
+            <mat-label i18n="Sign in page| Label password field">
+                Password
+            </mat-label>
             <input matInput type="password">
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>Inscription</button>
-        <button mat-button color="primary">Mot de passe perdu ?</button>
-        <button mat-button>Connexion</button>
+        <button mat-button color="primary" i18n="Sign in page| Label forget password button redirection">
+            Forgot your password?
+        </button>
+        <button mat-button i18n="Sign in page| Label sign in button redirection">
+            Sign in
+        </button>
     </mat-card-actions>
 </mat-card>
+<button mat-button i18n="Sign in page| Label register now button redirection">
+    Don't have an account yet? Register
+    now
+</button>

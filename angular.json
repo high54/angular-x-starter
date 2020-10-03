@@ -68,6 +68,11 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "fr": {
+              "localize": [
+                "fr"
+              ]
             }
           }
         },
@@ -79,6 +84,9 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-x-starter:build:production"
+            },
+            "fr": {
+              "browserTarget": "angular-x-starter:build:fr"
             }
           }
         },
