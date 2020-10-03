@@ -38,7 +38,7 @@ Cela permet également d'ajouter une couche de sécurité supplémentaire en év
 
 ## Server Side Rendering - SSR
 
-Pré compilation des pages pour un chargement plus rapide.
+Rendu côté serveur des pages pour un chargement plus rapide.
 Mise en cache des requêtes pour réduire les appelles au backend/web service.
 
 ## Progressive Web App - PWA
