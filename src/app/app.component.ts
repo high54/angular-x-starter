@@ -8,6 +8,7 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +17,7 @@ import {
 export class AppComponent implements OnDestroy {
   public mobileQuery: MediaQueryList;
   public title = 'Angular X Starter';
-  public isLoading = true;
+  public isLoading = false;
   private mobileQueryListener: () => void;
 
   constructor(
