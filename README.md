@@ -23,7 +23,7 @@ La structure est découpée en deux sections : `Core` et `Modules`.
 
 ## Core
 
-La section `Core` s'occupe de tout ce qui est chargé à la première connexion de l'utilisateur. Ainsi on retrouve toute les fonctionnalités néccaissaire au bon fonctionnement de l'application : interface utilisateur, synchronisation des données, authentification, configuration.
+La section `Core` s'occupe de tout ce qui est chargé à la première connexion de l'utilisateur. Ainsi on retrouve toutes les fonctionnalités néccaissaire au bon fonctionnement de l'application : interface utilisateur, synchronisation des données, authentification, configuration.
 
 ## Modules
 
@@ -33,7 +33,7 @@ Cela permet également d'ajouter une couche de sécurité supplémentaire en év
 
 # Fonctionnalités
 
-## Server Side Rendering
+## Server Side Rendering - SSR
 
 Pré compilation des pages pour un chargement plus rapide.
 Mise en cache des requêtes pour réduire les appelles au backend/web service.
@@ -47,11 +47,12 @@ Améliore la rapidité de chargement en installant l'interface utilisateur et le
 
 Une seule application pour PC et Smatphone.
 
-## Online/offline synchronisation
+## Online/Offline synchronisation
 
 Mise en cache des requêtes en cas de coupure internet.
 Synchronisation avec le backend une fois la connexion rétablie.
 
+## Continuous Integration / Continuous Delivery - Ci/CD
 
 # Documentation technique
 
