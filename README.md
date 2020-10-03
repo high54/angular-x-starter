@@ -56,17 +56,23 @@ Synchronisation avec le backend une fois la connexion rétablie.
 
 ## Internationalisation - I18N
 
-Internationalisation des textes statique de l'application.
+Internationalisation des textes statique de l'application via @angular/localize en anglais US et en français FR.
+
+L'ensemble de texte statique sont extrait dans des fichiers déstiné aux logiciels professionnel de traduction.
+Cela comporte le texte à traduire et le contexte.
+
 
 ## Continuous Integration / Continuous Delivery - Ci/CD
 
 # Documentation technique
 
-|     Module     |                      Documentation                      |
-| :------------: | :-----------------------------------------------------: |
-| User Interface | [Consulter la documentation](src/app/core/ui/README.md) |
-|                |                                                         |
-|                |                                                         |
+|           Module            |                      Documentation                      |
+| :-------------------------: | :-----------------------------------------------------: |
+|       User Interface        | [Consulter la documentation](src/app/core/ui/README.md) |
+| Internationalisation - I18N | [Consulter la documentation](/INTERNATIONALIZATION.md)  |
+|                             |                                                         |
+
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
