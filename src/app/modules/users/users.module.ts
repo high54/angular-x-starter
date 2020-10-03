@@ -6,9 +6,11 @@ import { UsersMaterialModule } from './users-material.module';
 import { UsersRoutingModule } from './users-routing.module';
 // Containers
 import * as fromContainers from './containers';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         UsersMaterialModule,
         UsersRoutingModule
     ],
