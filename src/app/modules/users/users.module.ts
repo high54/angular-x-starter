@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // Angular Material Module
-import { AuthenticationMaterialModule } from './authentication-material.module';
+import { UsersMaterialModule } from './users-material.module';
 // Routes
-import { AuthenticationRoutingModule } from './authentication-routing.module';
+import { UsersRoutingModule } from './users-routing.module';
 // Containers
 import * as fromContainers from './containers';
 @NgModule({
     imports: [
         CommonModule,
-        AuthenticationMaterialModule,
-        AuthenticationRoutingModule
+        UsersMaterialModule,
+        UsersRoutingModule
     ],
     declarations: [
         ...fromContainers.containers
     ],
     providers: []
 })
-export class AuthenticationModule { }
+export class UsersModule { }

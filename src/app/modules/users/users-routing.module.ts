@@ -5,16 +5,16 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
     {
-        path: 'register',
-        component: fromContainers.AuthenticationRegisterComponent
+        path: 'sign-up',
+        component: fromContainers.UsersSignUpComponent
     },
     {
         path: 'sign-in',
-        component: fromContainers.AuthenticationSignInComponent
+        component: fromContainers.UsersSignInComponent
     }
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class AuthenticationRoutingModule { }
+export class UsersRoutingModule { }
