@@ -7,7 +7,7 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./sign-up.component.scss']
 })
 export class UsersSignUpComponent implements OnInit {
-  public title = 'Sign in';
+  public title = 'Sign up';
   public signUpForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -24,7 +24,7 @@ export class UsersSignUpComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.titleService.setTitle(this.title);
+    this.titleService.setTitle(this.titleService.getTitle() + ' - ' + this.title);
     this.metaService.addTags([
       { property: 'og:type', content: 'object' },
       { property: 'og:site_name', content: 'Angular X Starter' },
