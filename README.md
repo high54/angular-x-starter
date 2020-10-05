@@ -11,9 +11,11 @@ La structure est découpée en deux sections : `Core` et `Modules`.
   - [Server Side Rendering - SSR](#server-side-rendering---ssr)
   - [Progressive Web App - PWA](#progressive-web-app---pwa)
   - [Design Responsive](#design-responsive)
+  - [Base de données NoSQL](#base-de-données-nosql)
   - [Online/Offline synchronisation](#onlineoffline-synchronisation)
   - [Internationalisation - I18N](#internationalisation---i18n)
   - [Accessibilité - A11Y](#accessibilité---a11y)
+  - [Search Engine Optimisation - SEO](#search-engine-optimisation---seo)
   - [Continuous Integration / Continuous Delivery - CI/CD](#continuous-integration--continuous-delivery---cicd)
 - [Documentation technique](#documentation-technique)
   - [Development server](#development-server)
@@ -50,9 +52,13 @@ Améliore la rapidité de chargement en installant l'interface utilisateur et le
 
 Une seule application pour PC et Smatphone.
 
+## Base de données NoSQL
+
+Base de données NoSQL avec IndexedDB.
+
 ## Online/Offline synchronisation
 
-Mise en cache des requêtes en cas de coupure internet.
+Enregistrement en base de données local des requêtes effectué lorsque l'application est hors ligne.
 Synchronisation avec le backend une fois la connexion rétablie.
 
 ## Internationalisation - I18N
@@ -66,15 +72,19 @@ Cela comporte le texte à traduire et le contexte.
 
 Permettre aux personnes en situation de handicap de consulter en toute simplicité l'application.
 
+## Search Engine Optimisation - SEO
+
+Intégration des informations pour le SEO via divers méchanisme.
+
 ## Continuous Integration / Continuous Delivery - CI/CD
 
 # Documentation technique
 
-|           Module            |                         Documentation                         |
-| :-------------------------: | :-----------------------------------------------------------: |
-|       User Interface        |    [Consulter la documentation](src/app/core/ui/README.md)    |
-|            Users            | [Consulter la documentation](src/app/modules/users/README.md) |
-| Internationalisation - I18N |    [Consulter la documentation](/INTERNATIONALIZATION.md)     |
+|                      Module                       |                       Documentation                       |
+| :-----------------------------------------------: | :-------------------------------------------------------: |
+|                  Authentication                   | [Consulter la documentation](src/app/core/auth/README.md) |
+| Base de données et synchronisation offline/online |  [Consulter la documentation](src/app/core/database/README.md)   |
+|            Internationalisation - I18N            |  [Consulter la documentation](/INTERNATIONALIZATION.md)   |
 
 
 
