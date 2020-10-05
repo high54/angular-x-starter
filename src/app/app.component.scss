@@ -29,3 +29,12 @@
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
   }
+
+  footer {
+    padding-top:1rem;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: 0.75rem;
+    background-color: #ececec;
+  }

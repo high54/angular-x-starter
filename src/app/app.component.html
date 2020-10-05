@@ -11,8 +11,8 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
       <mat-nav-list>
-        <a mat-list-item routerLink="users/sign_up" i18n="site navigation|Link to the register page">Register</a>
-        <a mat-list-item routerLink="users/sign_in" i18n="site navigation|Link to the sign-in page">Sign-in</a>
+        <a mat-list-item routerLink="sign_up" i18n="site navigation|Link to the register page">Register</a>
+        <a mat-list-item routerLink="sign_in" i18n="site navigation|Link to the sign-in page">Sign-in</a>
       </mat-nav-list>
     </mat-sidenav>
 
@@ -20,4 +20,7 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <footer>
+   <span>© 2020 Angular X Starter.</span> <a mat-button routerLink="policies/privacy">Règles de confidentialité</a> - <a mat-button  routerLink="policies/terms">Conditions d'utilisation</a>
+  </footer>
 </main>

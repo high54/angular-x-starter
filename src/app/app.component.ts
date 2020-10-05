@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import {
   Event,
@@ -8,13 +8,15 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+// Services
+import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   public mobileQuery: MediaQueryList;
   public title = 'Angular X Starter';
   public isLoading = false;
@@ -24,10 +26,24 @@ export class AppComponent implements OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private router: Router,
+    private onlineOfflineService: OnlineOfflineService,
+    private storageService: StorageService,
+    private synchronizationService: SynchronizationService
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+  }
+
+  public ngOnInit(): void {
+    this.loader();
+    this.onlineOfflineService.connectionChanged.subscribe((connection) => {
+      if (connection) {
+        this.storageService.openDB().then((isOpen: boolean) => {
+          this.synchronizationService.sync();
+        });
+      }
+    });
   }
 
   public ngOnDestroy(): void {
