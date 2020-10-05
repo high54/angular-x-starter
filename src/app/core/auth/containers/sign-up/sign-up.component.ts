@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 @Component({
-  selector: 'app-users-sign-up',
+  selector: 'app-auth-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class UsersSignUpComponent implements OnInit {
+export class AuthSignUpComponent implements OnInit {
   public title = 'Sign up';
   public signUpForm = this.fb.group({
     firstName: ['', Validators.required],

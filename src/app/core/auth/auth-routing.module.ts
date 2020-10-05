@@ -6,19 +6,19 @@ import * as fromContainers from './containers';
 const routes: Routes = [
     {
         path: 'sign_up',
-        component: fromContainers.UsersSignUpComponent
+        component: fromContainers.AuthSignUpComponent
     },
     {
         path: 'sign_in',
-        component: fromContainers.UsersSignInComponent
+        component: fromContainers.AuthSignInComponent
     },
     {
         path: 'new_password',
-        component: fromContainers.UsersPasswordComponent
+        component: fromContainers.AuthPasswordComponent
     }
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class UsersRoutingModule { }
+export class AuthRoutingModule { }

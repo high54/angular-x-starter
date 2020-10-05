@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-users-password',
+  selector: 'app-auth-password',
   templateUrl: './password.component.html',
   styleUrls: ['./password.component.scss']
 })
-export class UsersPasswordComponent implements OnInit {
+export class AuthPasswordComponent implements OnInit {
   public newPasswordForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]]
   });

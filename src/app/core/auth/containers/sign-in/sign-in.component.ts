@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-users-sign-in',
+  selector: 'app-auth-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class UsersSignInComponent implements OnInit {
+export class AuthSignInComponent implements OnInit {
   public signInForm = this.fb.group({
     login: ['', Validators.required],
     password: ['', Validators.required],
