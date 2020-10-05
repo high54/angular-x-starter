@@ -12,7 +12,7 @@ export class AuthSignInComponent implements OnInit {
     password: ['', Validators.required],
     rememberMe: [false]
   });
-
+  public hide = true;
   constructor(
     private fb: FormBuilder
   ) { }

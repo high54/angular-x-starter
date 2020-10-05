@@ -17,6 +17,7 @@ export class AuthSignUpComponent implements OnInit {
     privacy: [false, Validators.requiredTrue],
     notifications: [false]
   });
+  public hide = true;
   constructor(
     private fb: FormBuilder,
     private metaService: Meta,
