@@ -24,7 +24,10 @@ section {
 
 @media (min-width: 1281px) {
     
-    
+    .content-center {
+        width: 60%;
+        margin: auto;
+    }
 }
 
 /* 
@@ -79,5 +82,8 @@ section {
 @media (min-width: 320px) and (max-width: 480px) {
     
     //CSS
-    
+    .content-center {
+        width: 90%;
+        margin: auto;
+    }
 }
