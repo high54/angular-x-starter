@@ -44,10 +44,17 @@ export class AppComponent implements OnInit, OnDestroy {
     this.onlineOfflineService.connectionChanged.subscribe((connection) => {
       if (connection) {
         this.storageService.openDB().then((isOpen: boolean) => {
-          this.synchronizationService.sync();
+          if (isOpen) {
+            this.synchronizationService.sync();
+          }
         });
       }
     });
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode !== null) {
+      this.darkMode = darkMode === 'true';
+    }
+    console.log(darkMode);
   }
 
   public ngOnDestroy(): void {
@@ -55,6 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   public changeTheme(): void {
     this.darkMode = !this.darkMode;
+    localStorage.setItem('darkMode', this.darkMode.toString());
   }
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
