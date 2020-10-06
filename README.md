@@ -17,6 +17,8 @@ La structure est découpée en deux sections : `Core` et `Modules`.
   - [Accessibilité - A11Y](#accessibilité---a11y)
   - [Search Engine Optimisation - SEO](#search-engine-optimisation---seo)
   - [Continuous Integration / Continuous Delivery - CI/CD](#continuous-integration--continuous-delivery---cicd)
+  - [SonarQube - Code Quality](#sonarqube---code-quality)
+  - [Dark and Light Mode - UX](#dark-and-light-mode---ux)
 - [Documentation technique](#documentation-technique)
   - [Development server](#development-server)
   - [Code scaffolding](#code-scaffolding)
@@ -43,23 +45,28 @@ Cela permet également d'ajouter une couche de sécurité supplémentaire en év
 Rendu côté serveur des pages pour un chargement plus rapide.
 Mise en cache des requêtes pour réduire les appelles au backend/web service.
 
+
 ## Progressive Web App - PWA
 
 Application installable sur Smartphone et PC.
 Améliore la rapidité de chargement en installant l'interface utilisateur et les assets sur l'appareil.
 
+
 ## Design Responsive
 
 Une seule application pour PC et Smatphone.
+
 
 ## Base de données NoSQL
 
 Base de données NoSQL avec IndexedDB.
 
+
 ## Online/Offline synchronisation
 
 Enregistrement en base de données local des requêtes effectué lorsque l'application est hors ligne.
 Synchronisation avec le backend une fois la connexion rétablie.
+
 
 ## Internationalisation - I18N
 
@@ -68,15 +75,32 @@ Internationalisation des textes statique de l'application via @angular/localize 
 L'ensemble de texte statique sont extrait dans des fichiers déstiné aux logiciels professionnel de traduction.
 Cela comporte le texte à traduire et le contexte.
 
+
 ## Accessibilité - A11Y
 
 Permettre aux personnes en situation de handicap de consulter en toute simplicité l'application.
+
 
 ## Search Engine Optimisation - SEO
 
 Intégration des informations pour le SEO via divers méchanisme.
 
+
 ## Continuous Integration / Continuous Delivery - CI/CD
+
+Intégration continue avec l'ensemble des tests présent sur les élements du starter.
+Déploiement continue avec les fichiers de configuration pour Docker.
+
+
+## SonarQube - Code Quality
+
+SonarQube prêt configuré.
+
+
+## Dark and Light Mode - UX
+
+Le changement de théme est déjà inclus, il n'y a plus cas configurer vos couleurs.
+
 
 # Documentation technique
 

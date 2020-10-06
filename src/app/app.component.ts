@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import {
   Event,
@@ -10,6 +10,7 @@ import {
 } from '@angular/router';
 // Services
 import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
+import { MatSidenavContent } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,12 @@ import { OnlineOfflineService, StorageService, SynchronizationService } from './
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  @ViewChild('scrollContent', { static: false }) scrollContent !: MatSidenavContent;
+
   public mobileQuery: MediaQueryList;
   public title = 'Angular X Starter';
   public isLoading = false;
+  public darkMode = false;
   private mobileQueryListener: () => void;
 
   constructor(
@@ -49,7 +53,9 @@ export class AppComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
   }
-
+  public changeTheme(): void {
+    this.darkMode = !this.darkMode;
+  }
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
@@ -60,8 +66,10 @@ export class AppComponent implements OnInit, OnDestroy {
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          this.isLoading = false;
-          window.scrollTo(0, 0);
+          this.scrollContent.getElementRef().nativeElement.scrollTop = 0;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 1000);
           break;
         }
       }

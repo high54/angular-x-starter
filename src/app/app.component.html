@@ -1,4 +1,4 @@
-<main class="container" [class.is-mobile]="mobileQuery.matches">
+<main class="container" [class.dark-theme]="darkMode" [class.is-mobile]="mobileQuery.matches">
   <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
@@ -8,6 +8,9 @@
     <span class="spacer"></span>
     <a mat-button routerLink="sign_up" i18n="site navigation|Link to the register page">Register</a>
     <a mat-button routerLink="sign_in" i18n="site navigation|Link to the sign-in page">Sign-in</a>
+    <button mat-button (click)="changeTheme()">
+      <mat-icon>{{  darkMode ? 'wb_sunny' : 'brightness_3' }}</mat-icon>
+    </button>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -18,13 +21,16 @@
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content #scrollContent>
       <router-outlet></router-outlet>
+      <footer>
+        <hr>
+        <a href="https://github.com/high54/angular-x-starter" mat-button target="_blank">© 2020 Angular X
+          Starter.</a> <a mat-button routerLink="policies/privacy">Règles de confidentialité</a> - <a mat-button
+          routerLink="policies/terms">Conditions d'utilisation</a>
+      </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  <footer>
-    <a href="https://github.com/high54/angular-x-starter" mat-button color="primary" target="_blank">© 2020 Angular X
-      Starter.</a> <a mat-button routerLink="policies/privacy">Règles de confidentialité</a> - <a mat-button
-      routerLink="policies/terms">Conditions d'utilisation</a>
-  </footer>
+
+
 </main>
