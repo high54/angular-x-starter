@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 // Models
 import { DatabaseModel } from '../../models/database.model';
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class StorageService {
     private db: DatabaseModel;
     constructor(

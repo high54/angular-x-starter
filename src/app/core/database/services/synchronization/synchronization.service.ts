@@ -9,7 +9,9 @@ import { throwError } from 'rxjs';
 import { QueueStatus, IQueue } from '../../models/database.model';
 // Angular Material Components
 import { MatSnackBar } from '@angular/material/snack-bar';
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class SynchronizationService {
     constructor(
         private storageService: StorageService,
