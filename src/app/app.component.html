@@ -1,23 +1,32 @@
 <main class="container" [class.dark-theme]="darkMode" [class.is-mobile]="mobileQuery.matches">
-  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar [mode]="progressMode" value="100"></mat-progress-bar>
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="app-name">{{ title }}</h1>
     <span class="spacer"></span>
-    <a mat-button routerLink="sign_up" i18n="site navigation|Link to the register page">Register</a>
-    <a mat-button routerLink="sign_in" i18n="site navigation|Link to the sign-in page">Sign-in</a>
-    <button mat-button (click)="changeTheme()">
-      <mat-icon>{{  darkMode ? 'wb_sunny' : 'brightness_3' }}</mat-icon>
-    </button>
+    <div *ngIf="!mobileQuery.matches">
+      <a mat-button routerLink="sign_up" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact:
+        true}" i18n="site navigation|Link to the register page">Register</a>
+      <a mat-button routerLink="sign_in" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact:
+        true}" i18n="site navigation|Link to the sign-in page">Sign-in</a>
+    </div>
+    <form [formGroup]="themeForm" (ngSubmit)="changeTheme()" ngNativeValidate>
+      <mat-slide-toggle (change)="changeTheme()" formControlName="darkMode">
+        <mat-icon [color]="darkMode ? 'accent' :''">brightness_3</mat-icon>
+      </mat-slide-toggle>
+    </form>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
       <mat-nav-list>
-
+        <div *ngIf="mobileQuery.matches">
+          <a mat-list-item routerLink="sign_up" i18n="site navigation|Link to the register page">Register</a>
+          <a mat-list-item routerLink="sign_in" i18n="site navigation|Link to the sign-in page">Sign-in</a>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
 
@@ -25,7 +34,8 @@
       <router-outlet></router-outlet>
       <footer>
         <hr>
-        <a href="https://github.com/high54/angular-x-starter" rel="noopener noreferrer" mat-button target="_blank">© 2020 Angular X
+        <a href="https://github.com/high54/angular-x-starter" rel="noopener noreferrer" mat-button target="_blank">©
+          2020 Angular X
           Starter.</a> <a mat-button routerLink="policies/privacy">Règles de confidentialité</a> - <a mat-button
           routerLink="policies/terms">Conditions d'utilisation</a>
       </footer>

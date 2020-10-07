@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSidenavContent } from '@angular/material/sidenav';
 import {
   Event,
   NavigationCancel,
@@ -10,7 +12,6 @@ import {
 } from '@angular/router';
 // Services
 import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
-import { MatSidenavContent } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,13 @@ import { MatSidenavContent } from '@angular/material/sidenav';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @ViewChild('scrollContent', { static: false }) scrollContent !: MatSidenavContent;
-
+  @ViewChild('scrollContent', { static: false }) private scrollContent !: MatSidenavContent;
+  public themeForm = this.fb.group({
+    darkMode: false
+  });
   public mobileQuery: MediaQueryList;
-  public title = 'Angular X Starter';
-  public isLoading = false;
-  public darkMode = false;
+  public title = $localize`:Application name:Angular X Starter`;
+  public progressMode = 'indeterminate';
   private mobileQueryListener: () => void;
 
   constructor(
@@ -32,7 +34,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private onlineOfflineService: OnlineOfflineService,
     private storageService: StorageService,
-    private synchronizationService: SynchronizationService
+    private synchronizationService: SynchronizationService,
+    private fb: FormBuilder
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
@@ -52,23 +55,25 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     const darkMode = localStorage.getItem('darkMode');
     if (darkMode !== null) {
-      this.darkMode = darkMode === 'true';
+      this.themeForm.patchValue({ darkMode: darkMode === 'true' });
     }
-    console.log(darkMode);
   }
 
   public ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
   }
   public changeTheme(): void {
-    this.darkMode = !this.darkMode;
-    localStorage.setItem('darkMode', this.darkMode.toString());
+    const { value } = this.themeForm;
+    localStorage.setItem('darkMode', value.darkMode.toString());
+  }
+  get darkMode(): AbstractControl {
+    return this.themeForm.get('darkMode').value;
   }
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
-          this.isLoading = true;
+          this.progressMode = 'indeterminate';
           break;
         }
         case event instanceof NavigationEnd:
@@ -76,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
         case event instanceof NavigationError: {
           this.scrollContent.getElementRef().nativeElement.scrollTop = 0;
           setTimeout(() => {
-            this.isLoading = false;
+            this.progressMode = 'determinate';
           }, 1000);
           break;
         }
