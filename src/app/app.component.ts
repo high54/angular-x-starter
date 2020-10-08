@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { FormBuilder, AbstractControl } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
+import { isPlatformBrowser } from '@angular/common';
 import {
   Event,
   NavigationCancel,
@@ -23,11 +24,11 @@ export class AppComponent implements OnInit, OnDestroy {
   public themeForm = this.fb.group({
     darkMode: false
   });
-  public mobileQuery: MediaQueryList;
   public title = $localize`:Application name:Angular X Starter`;
   public progressMode = 'indeterminate';
+  public isBrowserPlatform = false;
+  private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
-
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
@@ -35,32 +36,44 @@ export class AppComponent implements OnInit, OnDestroy {
     private onlineOfflineService: OnlineOfflineService,
     private storageService: StorageService,
     private synchronizationService: SynchronizationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject(PLATFORM_ID) platformId
   ) {
-    this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
-    this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    if (isPlatformBrowser(platformId)) {
+      this.isBrowserPlatform = true;
+    }
+    if (this.isBrowserPlatform) {
+      this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
+      this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
+      this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    }
+
   }
 
   public ngOnInit(): void {
-    this.loader();
-    this.onlineOfflineService.connectionChanged.subscribe((connection) => {
-      if (connection) {
-        this.storageService.openDB().then((isOpen: boolean) => {
-          if (isOpen) {
-            this.synchronizationService.sync();
-          }
-        });
+    if (this.isBrowserPlatform) {
+
+      this.loader();
+      this.onlineOfflineService.connectionChanged.subscribe((connection) => {
+        if (connection) {
+          this.storageService.openDB().then((isOpen: boolean) => {
+            if (isOpen) {
+              this.synchronizationService.sync();
+            }
+          });
+        }
+      });
+      const darkMode = localStorage.getItem('darkMode');
+      if (darkMode !== null) {
+        this.themeForm.patchValue({ darkMode: darkMode === 'true' });
       }
-    });
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode !== null) {
-      this.themeForm.patchValue({ darkMode: darkMode === 'true' });
     }
   }
 
   public ngOnDestroy(): void {
-    this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+    if (this.isBrowserPlatform) {
+      this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+    }
   }
   public changeTheme(): void {
     const { value } = this.themeForm;
@@ -68,6 +81,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   get darkMode(): AbstractControl {
     return this.themeForm.get('darkMode').value;
+  }
+  get matches(): boolean {
+    return this.isBrowserPlatform ? this.mobileQuery.matches : true;
   }
   private loader(): void {
     this.router.events.subscribe((event: Event) => {

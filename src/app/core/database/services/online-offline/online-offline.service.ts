@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 // Rxjs
 import { Subject, Observable } from 'rxjs';
 // Angular Material Components
@@ -12,6 +13,21 @@ declare const window: any;
 export class OnlineOfflineService {
     private internalConnectionChanged = new Subject<boolean>();
 
+    constructor(
+        private snackBar: MatSnackBar,
+        @Inject(PLATFORM_ID) platformId
+    ) {
+        if (isPlatformBrowser(platformId)) {
+            window.addEventListener('online', () => {
+                this.updateOnlineStatus();
+            });
+            window.addEventListener('offline', () => {
+                this.openSnackBar('Connexion au réseau perdu.', 'snackBar-danger');
+                this.updateOnlineStatus();
+            });
+        }
+    }
+
     get connectionChanged(): Observable<boolean> {
         return this.internalConnectionChanged.asObservable();
     }
@@ -19,19 +35,6 @@ export class OnlineOfflineService {
     get isOnline(): boolean {
         return !!window.navigator.onLine;
     }
-
-    constructor(
-        private snackBar: MatSnackBar
-    ) {
-        window.addEventListener('online', () => {
-            this.updateOnlineStatus();
-        });
-        window.addEventListener('offline', () => {
-            this.openSnackBar('Connexion au réseau perdu.', 'snackBar-danger');
-            this.updateOnlineStatus();
-        });
-    }
-
     private updateOnlineStatus(): void {
         this.internalConnectionChanged.next(window.navigator.onLine);
     }

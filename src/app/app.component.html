@@ -1,4 +1,4 @@
-<main class="container" [class.dark-theme]="darkMode" [class.is-mobile]="mobileQuery.matches">
+<main class="container" [class.dark-theme]="darkMode" [class.is-mobile]="matches">
   <mat-progress-bar [mode]="progressMode" value="100"></mat-progress-bar>
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
@@ -6,7 +6,7 @@
     </button>
     <h1 class="app-name">{{ title }}</h1>
     <span class="spacer"></span>
-    <div *ngIf="!mobileQuery.matches">
+    <div *ngIf="!matches">
       <a mat-button routerLink="sign_up" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact:
         true}" i18n="site navigation|Link to the register page">Register</a>
       <a mat-button routerLink="sign_in" routerLinkActive="mat-accent" [routerLinkActiveOptions]="{exact:
@@ -19,11 +19,11 @@
     </form>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="matches ? 'over' : 'side'" [fixedInViewport]="matches"
       fixedTopGap="56">
       <mat-nav-list>
-        <div *ngIf="mobileQuery.matches">
+        <div *ngIf="matches">
           <a mat-list-item routerLink="sign_up" i18n="site navigation|Link to the register page">Register</a>
           <a mat-list-item routerLink="sign_in" i18n="site navigation|Link to the sign-in page">Sign-in</a>
         </div>
