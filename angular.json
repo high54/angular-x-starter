@@ -14,7 +14,7 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en-US",
+        "sourceLocale": "en",
         "locales": {
           "fr": "src/locale/messages.fr.xlf"
         }
@@ -196,6 +196,6 @@
   },
   "defaultProject": "angular-x-starter",
   "cli": {
-    "analytics": "d3ac9633-cbe2-4b55-ace3-883bcfd421ca"
+    "analytics": "83ffa0c3-ff78-44ed-b400-277365044042"
   }
 }

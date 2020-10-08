@@ -7,17 +7,19 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import { LOCALE_ID } from '@angular/core';
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app(): express.Express {
+export function app(lang: string): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/angular-x-starter/browser');
+  const distFolder = join(process.cwd(), `dist/angular-x-starter/browser/${lang}`);
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,
-  }));
+    extraProviders: [{ provide: LOCALE_ID, useValue: lang }],
+  } as any));
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
@@ -39,9 +41,13 @@ export function app(): express.Express {
 
 function run(): void {
   const port = process.env.PORT || 4000;
-
+  const appFr = app('fr');
+  const appEn = app('en');
+  const server = express();
+  server.use('/fr', appFr);
+  server.use('/en', appEn);
+  server.use('', appEn);
   // Start up the Node server
-  const server = app();
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
