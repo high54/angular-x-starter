@@ -14,7 +14,8 @@
         true}" i18n="site navigation|Link to the sign-in page">Sign-in</a>
     </div>
     <form [formGroup]="themeForm" (ngSubmit)="changeTheme()" ngNativeValidate>
-      <mat-slide-toggle [attr.aria-label]="btnAriaLabelToggleDarkMode" (change)="changeTheme()" formControlName="darkMode">
+      <mat-slide-toggle [attr.aria-label]="btnAriaLabelToggleDarkMode" (change)="changeTheme()"
+        formControlName="darkMode">
         <mat-icon [color]="darkMode ? 'accent' :''" aria-hidden="true">brightness_3</mat-icon>
       </mat-slide-toggle>
     </form>
@@ -36,8 +37,9 @@
         <hr>
         <a href="https://github.com/high54/angular-x-starter" rel="noopener noreferrer" mat-button target="_blank">©
           2020 Angular X
-          Starter.</a> <a mat-button routerLink="policies/privacy">Règles de confidentialité</a> - <a mat-button
-          routerLink="policies/terms">Conditions d'utilisation</a>
+          Starter.</a> <a mat-button routerLink="policies/privacy"
+          i18n="Footer Link |Link to the privacy page">Privacy</a> - <a mat-button routerLink="policies/terms"
+          i18n="Footer Link |Link to the terms page">Terms</a>
       </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>

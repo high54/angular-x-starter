@@ -1,84 +1,295 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="56fc3f08ef7130088df5f4c0bb54cc0542171a6c" datatype="html">
         <source>Register</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">12</context>
         </context-group>
-        <note priority="1" from="description">Redirect to the register page</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Link to the register page</note>
         <note priority="1" from="meaning">site navigation</note>
       </trans-unit>
       <trans-unit id="d87dca70f690476b059b5b6599e2b0a0a011145d" datatype="html">
         <source>Sign-in</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">14</context>
         </context-group>
-        <note priority="1" from="description">Redirect to the sign-in page</note>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">Link to the sign-in page</note>
         <note priority="1" from="meaning">site navigation</note>
       </trans-unit>
-      <trans-unit id="054dceb3c4a048f08acb1f1b575a31114c0c4a7a" datatype="html">
-        <source>
-            Sign in
-        </source>
+      <trans-unit id="c2fda27ff192831fa634efb13839355398a908dd" datatype="html">
+        <source>Privacy</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/authentication/containers/sign-in/sign-in.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Link to the privacy page</note>
+        <note priority="1" from="meaning">Footer Link </note>
+      </trans-unit>
+      <trans-unit id="508922d05657b73cc7aa2647f0b202df3a8dc78e" datatype="html">
+        <source>Terms</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="description">Link to the terms page</note>
+        <note priority="1" from="meaning">Footer Link </note>
+      </trans-unit>
+      <trans-unit id="052d5a1eee79795920abda09c97880d1923ebb5a" datatype="html">
+        <source>
+                Privacy Policy
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/policies/containers/privacy/privacy.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description"> Title</note>
+        <note priority="1" from="meaning">Privacy</note>
+      </trans-unit>
+      <trans-unit id="66c932a9469f31cb86660441b05da3b39fc67304" datatype="html">
+        <source>
+                Terms
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/policies/containers/terms/terms.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description"> Title</note>
+        <note priority="1" from="meaning">Terms </note>
+      </trans-unit>
+      <trans-unit id="4190f60b3bc4a854b5c64649f73c0baa04e3dd1e" datatype="html">
+        <source>
+                    Sign up
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/authentication/containers/sign-in/sign-in.component.html</context>
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <note priority="1" from="description"> Page title</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="1dfc5335ec57b3950d753c62711b2a39b0abebb5" datatype="html">
+        <source>
+                        First name
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description"> Label first name field</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="552e2b22b1d80abff5db2a0cb60777626e069ab2" datatype="html">
+        <source>
+                        Last name
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
           <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description"> Label last name field</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="0c8daa71e9f383c699934c9eed124a742c4eaa1e" datatype="html">
+        <source>
+                        Username
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <note priority="1" from="description"> Label username field</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="ac31402f8673232f19f553ed1aa5be890d3a31ff" datatype="html">
+        <source>
+                        Email
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description"> Label email field</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="ad50d5a982def40f96269e21240da7b84db2497c" datatype="html">
+        <source>
+                        Password
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="description"> Label password field</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="a04962bdf182c27a08b45e614ed5024d76a12aaf" datatype="html">
+        <source>Minimum length is 8
+                            characters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <note priority="1" from="description"> Hint for the password field</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="5afbfdda548454fa6f1d8cad8272fcf8dab93546" datatype="html">
+        <source>I accept the </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <note priority="1" from="description"> Label for the checkbox</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="02a34ab51cdd9cd2e75bb838997e88b8164c4040" datatype="html">
+        <source>I&apos;d like to receive
+                    updates via email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="description"> Label for the checkbox</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="8cc42ee7206fd2e9e8e35374bb51ab457fe54ccb" datatype="html">
+        <source>
+                    Already have login and password? Sign in
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-up/sign-up.component.html</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <note priority="1" from="description"> Label for the Sign In button redirection</note>
+        <note priority="1" from="meaning">Sign up page</note>
+      </trans-unit>
+      <trans-unit id="0e33ccc0d70053355ad1da0c811496166a91caf5" datatype="html">
+        <source>
+                    <x id="INTERPOLATION" equiv-text="{{ title }}"/>
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <note priority="1" from="description"> Page title</note>
         <note priority="1" from="meaning">Sign in page</note>
       </trans-unit>
-      <trans-unit id="54fb7ef842c8a161c2e24699b7206f1567c9c378" datatype="html">
+      <trans-unit id="c0c8f4a26d418af7ba28a9a472ab9b49d1814815" datatype="html">
         <source>
-                Username or email
-            </source>
+                        Username or email
+                    </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/authentication/containers/sign-in/sign-in.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description"> Label login field</note>
         <note priority="1" from="meaning">Sign in page</note>
       </trans-unit>
-      <trans-unit id="d0f81f79c35e94546cf8547e20fa2935276d0599" datatype="html">
+      <trans-unit id="b0a1f2b5cb899046f5761bb1b0833d9ce611c002" datatype="html">
         <source>
-                Password
-            </source>
+                        Password
+                    </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/authentication/containers/sign-in/sign-in.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <note priority="1" from="description"> Label password field</note>
         <note priority="1" from="meaning">Sign in page</note>
       </trans-unit>
-      <trans-unit id="35a54e8eb81f9e4bd427614a087a5c3ac6093c4a" datatype="html">
-        <source>
-            Forgot your password?
-        </source>
+      <trans-unit id="eb08751f8c525804cbd608945f89cdaa98961fdd" datatype="html">
+        <source>Remember me
+                </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/authentication/containers/sign-in/sign-in.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description"> Label for the checkbox</note>
+        <note priority="1" from="meaning">Sign in page</note>
+      </trans-unit>
+      <trans-unit id="1214f6a139ddc8f3e763823b04c36640b9acd97b" datatype="html">
+        <source>
+                    Forgot your password?
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <note priority="1" from="description"> Label forget password button redirection</note>
         <note priority="1" from="meaning">Sign in page</note>
       </trans-unit>
-      <trans-unit id="9eac626bb5238989ed21a423f293c5ed1d5828c5" datatype="html">
+      <trans-unit id="5ed749bd0f3c06373f0d9fc2f819c09c92308634" datatype="html">
         <source>
-    Don&apos;t have an account yet? Register
-    now
-</source>
+                    Sign in
+                </source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/authentication/containers/sign-in/sign-in.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">37</context>
         </context-group>
-        <note priority="1" from="description"> Label register now button redirection</note>
+        <note priority="1" from="description"> Label sign in button redirection</note>
         <note priority="1" from="meaning">Sign in page</note>
+      </trans-unit>
+      <trans-unit id="7af625aebb07faded129988446d3b0f34042fbdf" datatype="html">
+        <source>
+                    Don&apos;t have an account yet? Register now
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/sign-in/sign-in.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description"> Label for the sign in button redirection</note>
+        <note priority="1" from="meaning">Sign in page</note>
+      </trans-unit>
+      <trans-unit id="794c3b4e9890bb2cc0ea6d165a0a19c4fe8c48bf" datatype="html">
+        <source>
+                    Reset password
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/password/password.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/password/password.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description"> Page title</note>
+        <note priority="1" from="meaning">Forgot your password</note>
+      </trans-unit>
+      <trans-unit id="7a322134b636ee8f01a64105c63d79604ee14d21" datatype="html">
+        <source>
+                        Email
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/password/password.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description"> Label email field</note>
+        <note priority="1" from="meaning">Forgot your password</note>
+      </trans-unit>
+      <trans-unit id="e36c3ae3a95de4fbf0ac45cf5d4c62d2a9f8bb2a" datatype="html">
+        <source>
+                    Already have login and password? Sign in
+                </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/auth/containers/password/password.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description"> Label for the Sign In button redirection</note>
+        <note priority="1" from="meaning">Forgot your password</note>
       </trans-unit>
     </body>
   </file>

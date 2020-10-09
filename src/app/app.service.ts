@@ -3,6 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { SwUpdate } from '@angular/service-worker';
 // App configuration
 import * as config from './config';
+// RxJs
 import { interval, concat } from 'rxjs';
 import { first } from 'rxjs/operators';
 @Injectable({
@@ -58,5 +59,5 @@ export class AppService {
     everySixHoursOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
 
   }
-
+ 
 }
