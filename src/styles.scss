@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~material-design-icons/iconfont/material-icons.css';
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -59,6 +59,8 @@ body:not(.dark-theme) {
 section {
     padding: 1rem;
 }
+
+
 /* 
 ##Device = Desktops
 ##Screen = 1281px to higher resolution desktops
