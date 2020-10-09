@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Meta, Title } from '@angular/platform-browser';
+// Services
+import { AppService } from '../../../../app.service';
 @Component({
   selector: 'app-auth-sign-up',
   templateUrl: './sign-up.component.html',
@@ -20,21 +21,17 @@ export class AuthSignUpComponent implements OnInit {
   public hide = true;
   constructor(
     private fb: FormBuilder,
-    private metaService: Meta,
-    private titleService: Title
+    private appService: AppService
   ) { }
 
   public ngOnInit(): void {
-    this.titleService.setTitle(this.titleService.getTitle() + ' - ' + this.title);
-    this.metaService.addTags([
-      { property: 'og:type', content: 'object' },
-      { property: 'og:site_name', content: 'Angular X Starter' },
-      { property: 'og:title', content: this.title },
-      { property: 'og:description', content: 'github.com/high54/angular-x-starter' },
+    this.appService.setTitle(this.title);
+    this.appService.addTags([
+      { property: 'og:type', content: 'article' },
       { name: 'keywords', content: 'Angular, Universal, Example' },
-      { name: 'description', content: 'Angular X Starter' },
       { name: 'robots', content: 'index, follow' }
     ]);
+    this.appService.setDescription(' ');
   }
   public submitForm(): void {
     const { value, valid } = this.signUpForm;

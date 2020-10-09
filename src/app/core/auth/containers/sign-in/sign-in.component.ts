@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl, Validators } from '@angular/forms';
+// Services
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -7,6 +9,7 @@ import { FormBuilder, AbstractControl, Validators } from '@angular/forms';
   styleUrls: ['./sign-in.component.scss']
 })
 export class AuthSignInComponent implements OnInit {
+  public title = `Sign in`;
   public signInForm = this.fb.group({
     login: ['', Validators.required],
     password: ['', Validators.required],
@@ -14,10 +17,12 @@ export class AuthSignInComponent implements OnInit {
   });
   public hide = true;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private appService: AppService
   ) { }
 
   public ngOnInit(): void {
+    this.appService.setTitle(this.title);
   }
   public submitForm(): void {
     const { value, valid } = this.signInForm;

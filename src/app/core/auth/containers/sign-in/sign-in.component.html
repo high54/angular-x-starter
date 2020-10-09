@@ -4,7 +4,7 @@
         <mat-card class="card">
             <mat-card-header>
                 <mat-card-title i18n="Sign in page| Page title">
-                    Sign in
+                    {{ title }}
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
@@ -19,9 +19,10 @@
                         Password
                     </mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" type="password">
-                    <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <button mat-icon-button type="button" matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
+                    </button>
                 </mat-form-field>
 
                 <mat-checkbox formControlName="rememberMe" class="checkbox-margin"

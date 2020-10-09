@@ -13,6 +13,7 @@ import {
 } from '@angular/router';
 // Services
 import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
     darkMode: false
   });
   public title = $localize`:Application name:Angular X Starter`;
+  public btnAriaLabelSideNav = ':Button toggle side nav:Open side navigation';
+  public btnAriaLabelToggleDarkMode = ':Button toggle dark mode:Activate dark mode';
   public progressMode = 'indeterminate';
   public isBrowserPlatform = false;
   private mobileQuery: MediaQueryList;
@@ -37,7 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private storageService: StorageService,
     private synchronizationService: SynchronizationService,
     private fb: FormBuilder,
-    @Inject(PLATFORM_ID) platformId
+    @Inject(PLATFORM_ID) platformId,
+    private appService: AppService
   ) {
     if (isPlatformBrowser(platformId)) {
       this.isBrowserPlatform = true;
@@ -52,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     if (this.isBrowserPlatform) {
-
+      this.appService.checkForUpdate();
       this.loader();
       this.onlineOfflineService.connectionChanged.subscribe((connection) => {
         if (connection) {
