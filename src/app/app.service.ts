@@ -1,8 +1,7 @@
 import { Injectable, ApplicationRef } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { SwUpdate } from '@angular/service-worker';
-// App configuration
-import * as config from './config';
+import { environment } from '../environments/environment';
 // RxJs
 import { interval, concat } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -17,16 +16,15 @@ export class AppService {
     private updates: SwUpdate,
     private appRef: ApplicationRef
   ) {
-    this.metaService.addTag({ property: 'og:site_name', content: config.APP_NAME });
+    this.metaService.addTag({ property: 'og:site_name', content: environment.appName });
   }
 
   public setTitle(title: string): void {
     this.metaService.removeTag('property="og:title"');
     this.metaService.removeTag('name="twitter:title"');
-    this.titleService.setTitle(`${config.APP_NAME} - ${title}`);
-    this.metaService.addTag({ property: 'og:title', content: `${config.APP_NAME} - ${title}` });
-    this.metaService.addTag({ name: 'twitter:title', content: `${config.APP_NAME} - ${title}` });
-
+    this.titleService.setTitle(`${environment.appName} - ${title}`);
+    this.metaService.addTag({ property: 'og:title', content: `${environment.appName} - ${title}` });
+    this.metaService.addTag({ name: 'twitter:title', content: `${environment.appName} - ${title}` });
   }
 
   public setDescription(description: string): void {
@@ -45,8 +43,6 @@ export class AppService {
   }
 
   public checkForUpdate(): void {
-    console.log('bonjour')
-
     this.updates.available.subscribe(event => {
       console.log(event);
       this.updates.activateUpdate().then(() => document.location.reload());
@@ -59,5 +55,5 @@ export class AppService {
     everySixHoursOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
 
   }
- 
+
 }

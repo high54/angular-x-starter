@@ -3,6 +3,8 @@ import { FormBuilder, AbstractControl } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../environments/environment';
+
 import {
   Event,
   NavigationCancel,
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public themeForm = this.fb.group({
     darkMode: false
   });
-  public title = $localize`:Application name:Angular X Starter`;
+  public title = $localize`:Application name:${environment.appName}`;
   public btnAriaLabelSideNav = ':Button toggle side nav:Open side navigation';
   public btnAriaLabelToggleDarkMode = ':Button toggle dark mode:Activate dark mode';
   public progressMode = 'indeterminate';

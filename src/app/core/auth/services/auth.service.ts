@@ -105,7 +105,7 @@ export class AuthService {
   public login(username: string, password: string, rememberMe: boolean): Observable<IUser> {
     // Call auth API:
     const loginPayload = JSON.stringify({ idOrUsernameOrEmail: username, password });
-    return this.http.post<any>(`${environment.LOGIN_REGISTER_URI}${environment.LOGIN_EP}`, loginPayload, this.httpOptions)
+    return this.http.post<any>(`${environment.loginRegisterUri}${environment.loginEp}`, loginPayload, this.httpOptions)
       .pipe(catchError((error: any) => throwError(JSON.stringify(error))), concatMap(authApiResp => {
         const newUser: IUser = {
           id: authApiResp.body.user.userId,
@@ -120,7 +120,7 @@ export class AuthService {
         };
         this.currentUserSubject.next(newUser);
         // Call user app data API:
-        return this.http.get<IUser>(`${environment.apiUrlBase}${environment.USERS_EP}${newUser.id}`)
+        return this.http.get<IUser>(`${environment.apiUrlBase}${environment.usersEp}${newUser.id}`)
           .pipe(map((userApiResp) => {
             newUser.firstName = userApiResp.firstName;
             newUser.lastName = userApiResp.lastName;

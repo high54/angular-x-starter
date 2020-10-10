@@ -8,9 +8,10 @@ export const environment = {
   apiUrlBase: `https://localhost:3000/`,
   authUrlBase: `https://auth.localhost/`,
   authEndpoint: `api/auth/login`,
-  LOGIN_REGISTER_URI: '',
-  LOGIN_EP: '',
-  USERS_EP: ''
+  appName: 'Angular X Starter',
+  loginRegisterUri: '',
+  loginEp: '',
+  usersEp: ''
 };
 
 /*
