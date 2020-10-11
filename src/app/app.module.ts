@@ -14,6 +14,8 @@ import { AppMaterialModule } from './app-material.module';
 import { AuthModule } from './core/auth/auth.module';
 // Database Module
 import { DatabaseModule } from './core/database/database.module';
+// User Interface Module
+import { UIModule } from './core/ui/ui.module';
 // Components
 import { AppComponent } from './app.component';
 @NgModule({
@@ -29,6 +31,7 @@ import { AppComponent } from './app.component';
     AppMaterialModule,
     AuthModule,
     DatabaseModule,
+    UIModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

@@ -12,10 +12,10 @@
 $candy-app-primary: mat-palette($mat-deep-purple);
 $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
 $candy-app-theme:   mat-light-theme((
-  color: (
-    primary: $candy-app-primary,
-    accent: $candy-app-accent,
-  )
+color: (
+primary: $candy-app-primary,
+accent: $candy-app-accent,
+)
 ));
 
 // Include the default theme styles (color and default density)
@@ -27,11 +27,11 @@ $dark-primary: mat-palette($mat-purple);
 $dark-accent:  mat-palette($mat-amber, A200, A100, A400);
 $dark-warn:    mat-palette($mat-deep-orange);
 $dark-theme:   mat-dark-theme((
-  color: (
-    primary: $dark-primary,
-    accent: $dark-accent,
-    warn: $dark-warn,
-  )
+color: (
+primary: $dark-primary,
+accent: $dark-accent,
+warn: $dark-warn,
+)
 ));
 
 
@@ -39,7 +39,7 @@ $dark-theme:   mat-dark-theme((
 // CSS class whatever you want. In this example, any component inside of an element with
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 .dark-theme {
-  @include angular-material-color($dark-theme);
+    @include angular-material-color($dark-theme);
 }
 html, body { height: 100%; }
 body { margin: 0; font-family:  'Raleway', sans-serif; }
@@ -59,7 +59,111 @@ body:not(.dark-theme) {
 section {
     padding: 1rem;
 }
+footer {
+    padding-top:1rem;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: 0.75rem;
+    hr {
+        width: 60%;
+        margin:auto;
+    }
+}
+$primary: red;
+$secondary: blue;
+$dark-primary: green;
 
+#breadcrumb {
+    display: table;
+    
+    #breadcrumb-list{
+        list-style: none;
+        display: table-cell;
+        width: 100%;
+        padding-left: 1rem;
+        margin: 0;
+        margin-top: 0.5rem;
+        box-sizing: border-box;
+        .icon{
+            font-size: 0.875rem;
+        }
+        
+        li{
+            float:left;
+            a{
+                display:block;
+                text-decoration: none;
+                position:relative;
+                height: 2rem;
+                line-height: 2rem;
+                padding: 0 0.625rem 0 0.3125rem;
+                text-align: center;
+                margin-right: 1.4375rem;
+            }
+            &:nth-child(even){
+                a{
+                    background-color: $secondary;
+                    
+                    &:before{
+                        border-color:$secondary;
+                        border-left-color:transparent;
+                    }
+                    &:after{
+                        border-left-color:$secondary;
+                    }
+                }
+            }
+            &:first-child{
+                a{
+                    padding-left:0.9375rem;
+                    -webkit-border-radius: 0.25rem 0 0 0.25rem;
+                    -moz-border-radius: 0.25rem 0 0 0.25rem;
+                    -ms-border-radius: 0.25rem 0 0 0.25rem;
+                    border-radius: 0.25rem 0 0 0.25rem;
+                    &:before{
+                        border:none;
+                    }
+                }
+            }
+            &:last-child{
+                a{
+                    padding-right:0.9375rem;
+                    -webkit-border-radius: 0 0.25rem 0.25rem 0;
+                    -moz-border-radius: 0 0.25rem 0.25rem 0;
+                    -ms-border-radius: 0 0.25rem 0.25rem 0;
+                    border-radius: 0 0.25rem 0.25rem 0;
+                    &:after{
+                        border:none;
+                    }
+                }
+            }
+            
+            a {
+                &:before,
+                &:after{
+                    content: "";
+                    position:absolute;
+                    top: 0;
+                    border:0 solid $primary;
+                    border-width: 1rem 0.625rem;
+                    width: 0;
+                    height: 0;
+                }
+                &:before{
+                    left:-1.25rem;
+                    border-left-color:transparent;
+                }
+                &:after{
+                    left:100%;
+                    border-color:transparent;
+                    border-left-color:$primary;
+                }
+                
+            }
+        }
+    }
+}
 
 /* 
 ##Device = Desktops
@@ -135,4 +239,80 @@ section {
         margin: 0 0;
         overflow-wrap: break-word;
     }
+    
+    #breadcrumb{
+        li {
+            a{
+                display:block;
+                background: transparent;
+                text-decoration: none;
+                position:relative;
+                height: 1rem;
+                line-height: 1rem;
+                padding: 0 0.625rem 0 0.3125rem;
+                text-align: center;
+                margin-right: 1.4375rem;
+            }
+            
+            &:nth-child(even){
+                a{
+                    background-color: transparent;
+                    
+                    &:before{
+                        border-color: none;
+                        border-left-color: none;
+                    }
+                    &:after{
+                        border-left-color: none;
+                    }
+                }
+            }
+            
+            a{
+                &:before,
+                &:after{
+                    content: "";
+                    position:absolute;
+                    top: 0;
+                    border: 0;
+                    border-width: 0;
+                    width: 0;
+                    height: 0;
+                }
+                &:before{
+                    left: -1.25rem;
+                    border-left-color:transparent;
+                }
+                &:after{
+                    left: 100%;
+                    border-color:transparent;
+                    border-left-color: none;
+                }
+                &:hover{
+                    background-color: transparent;
+                    
+                    &:before{
+                        border-color: none;
+                        border-left-color:transparent;
+                    }
+                    &:after{
+                        border-left-color: none;
+                    }
+                }
+                &:active{
+                    background-color: transparent;
+                    
+                    &:before{
+                        border-color: none;
+                        border-left-color:transparent;
+                    }
+                    &:after{
+                        border-left-color: none;
+                    }
+                }
+            }
+            
+        }
+        
+    }    
 }
