@@ -103,6 +103,13 @@ Le changement de théme est déjà inclus, il n'y a plus cas configurer vos coul
 
 
 # Documentation technique
+Démarrer l'application :
+
+- `npm i`
+
+- `ng serve:ssr`
+
+
 
 |                      Module                       |                       Documentation                       |
 | :-----------------------------------------------: | :-------------------------------------------------------: |
