@@ -1,0 +1,16 @@
+<section id="breadcrumb">
+    <ul id="breadcrumb-list">
+        <li *ngFor="let breadcrumb of breadcrumbs">
+            <ng-container>
+            <!-- <ng-container *ngIf="breadcrumb.label !== breadcrumbs[breadcrumbs.length -1].label; else lastLink"> -->
+                <a mat-button [routerLink]="breadcrumb.url" routerLinkActive="active">
+                    <span>{{ breadcrumb.label }} </span>
+                </a>
+                <span> > </span>
+            </ng-container>
+            <!-- <ng-template #lastLink>
+                <span>{{ breadcrumb.label }} </span>
+            </ng-template> -->
+        </li>
+    </ul>
+</section>

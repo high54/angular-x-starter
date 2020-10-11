@@ -7,11 +7,23 @@ import * as fromContainers from './containers';
 const routes: Routes = [
     {
         path: 'privacy',
-        component: fromContainers.PoliciesPrivacyComponent
+        component: fromContainers.PoliciesPrivacyComponent,
+        data: {
+            breadcrumb: {
+                label: 'Privacy',
+                url: 'policies/privacy'
+            }
+        }
     },
     {
         path: 'terms',
-        component: fromContainers.PoliciesTermsComponent
+        component: fromContainers.PoliciesTermsComponent,
+        data: {
+            breadcrumb: {
+                label: 'Terms',
+                url: 'policies/terms'
+            }
+        }
     }
 ];
 
