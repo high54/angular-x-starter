@@ -1,5 +1,9 @@
 # Angular X Starter
 
+![https://github.com/high54/angular-x-starter/blob/main/LICENSE](https://img.shields.io/github/license/high54/angular-x-starter)
+![Build](https://github.com/high54/angular-x-starter/workflows/Node.js%20CI/badge.svg)
+
+
 Le projet a pour but de proposer une structure de projet prête à l'emploi pour le développement d'application web, mobile et de bureau.
 
 La structure est découpée en deux sections : `Core` et `Modules`.
