@@ -33,11 +33,12 @@ export class AuthSignUpComponent implements OnInit {
     ]);
     this.appService.setDescription(' ');
   }
-  public submitForm(): void {
-    const { value, valid } = this.signUpForm;
+  public submitForm(): boolean {
+    const { valid } = this.signUpForm;
     if (valid) {
-      console.log(value);
+      return true;
     }
+    return;
   }
   get firstName(): AbstractControl {
     return this.signUpForm.get('firstName');
@@ -46,7 +47,7 @@ export class AuthSignUpComponent implements OnInit {
     return this.signUpForm.get('lastName');
   }
   get username(): AbstractControl {
-    return this.signUpForm.get('lasusernameName');
+    return this.signUpForm.get('username');
   }
   get email(): AbstractControl {
     return this.signUpForm.get('email');

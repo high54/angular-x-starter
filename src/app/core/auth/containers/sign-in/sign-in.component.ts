@@ -24,11 +24,12 @@ export class AuthSignInComponent implements OnInit {
   public ngOnInit(): void {
     this.appService.setTitle(this.title);
   }
-  public submitForm(): void {
-    const { value, valid } = this.signInForm;
+  public submitForm(): boolean {
+    const { valid } = this.signInForm;
     if (valid) {
-      console.log(value);
+      return true;
     }
+    return;
   }
   get login(): AbstractControl {
     return this.signInForm.get('login');

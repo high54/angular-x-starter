@@ -16,11 +16,12 @@ export class AuthPasswordComponent implements OnInit {
 
   public ngOnInit(): void {
   }
-  public submitForm(): void {
-    const { value, valid } = this.newPasswordForm;
+  public submitForm(): boolean {
+    const { valid } = this.newPasswordForm;
     if (valid) {
-      console.log(value);
+      return true;
     }
+    return;
   }
   get email(): AbstractControl {
     return this.newPasswordForm.get('email');
