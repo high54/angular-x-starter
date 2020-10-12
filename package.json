@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run angular-x-starter:serve-ssr",
+    "sonar": "sonar-scanner",
+    "dev:ssr": "ng run angular-x-starter:serve-ssr -o",
     "serve:ssr": "node dist/angular-x-starter/server/main.js",
     "build:ssr": "ng build --prod && ng run angular-x-starter:server:production",
     "prerender": "ng run angular-x-starter:prerender"
