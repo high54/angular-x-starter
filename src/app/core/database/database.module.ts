@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 // Services
 import * as fromServices from './services';
 // Angular Material Modules
-import { DatabaseMaterialModule } from './database.material';
+import { DatabaseMaterialModule } from './database-material.module';
 
 @NgModule({
     imports: [
