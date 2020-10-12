@@ -14,7 +14,6 @@ import {
   Router
 } from '@angular/router';
 // Services
-import { AppService } from './app.service';
 import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
 // RxJs
 
@@ -48,7 +47,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private synchronizationService: SynchronizationService,
     private fb: FormBuilder,
     @Inject(PLATFORM_ID) platformId,
-    private appService: AppService,
     private updates: SwUpdate,
     private appRef: ApplicationRef
   ) {
