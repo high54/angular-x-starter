@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject, ApplicationRef } from '@angular/core';
 import { FormBuilder, AbstractControl } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../environments/environment';
-
+import { SwUpdate } from '@angular/service-worker';
 import {
   Event,
   NavigationCancel,
@@ -14,8 +14,13 @@ import {
   Router
 } from '@angular/router';
 // Services
-import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
 import { AppService } from './app.service';
+import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
+// RxJs
+
+import { first } from 'rxjs/operators';
+import { interval, concat } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -43,7 +48,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private synchronizationService: SynchronizationService,
     private fb: FormBuilder,
     @Inject(PLATFORM_ID) platformId,
-    private appService: AppService
+    private appService: AppService,
+    private updates: SwUpdate,
+    private appRef: ApplicationRef
   ) {
     if (isPlatformBrowser(platformId)) {
       this.isBrowserPlatform = true;
@@ -58,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     if (this.isBrowserPlatform) {
-      this.appService.checkForUpdate();
+      this.checkForUpdate();
       this.loader();
       this.onlineOfflineService.connectionChanged.subscribe((connection) => {
         if (connection) {
@@ -86,7 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
     localStorage.setItem('darkMode', value.darkMode.toString());
   }
   get darkMode(): AbstractControl {
-    return this.themeForm.get('darkMode').value;
+    return this.themeForm.get('darkMode');
   }
   get matches(): boolean {
     return this.isBrowserPlatform ? this.mobileQuery.matches : true;
@@ -109,5 +116,23 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+  private checkForUpdate(): void {
+    if (this.updates.isEnabled) {
+      this.updates.available.subscribe(event => {
+        this.updates.activateUpdate().then(() => {
+          if (window.confirm(`Une mise à jour est disponible, souhaitez vous l'installer ?`)) {
+            document.location.reload();
+          }
+        });
+      });
+      // Allow the app to stabilize first, before starting polling for updates with `interval()`.
+      const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
+      const everySixHours$ = interval(6 * 60 * 60 * 1000);
+      const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
+
+      everySixHoursOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
+    }
+
   }
 }

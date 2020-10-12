@@ -2,9 +2,7 @@ import { Injectable, ApplicationRef } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { SwUpdate } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-// RxJs
-import { interval, concat } from 'rxjs';
-import { first } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +10,7 @@ export class AppService {
 
   constructor(
     private metaService: Meta,
-    private titleService: Title,
-    private updates: SwUpdate,
-    private appRef: ApplicationRef
+    private titleService: Title
   ) {
     this.metaService.addTag({ property: 'og:site_name', content: environment.appName });
   }
@@ -40,20 +36,6 @@ export class AppService {
 
   public addTags(tags: any[]): void {
     this.metaService.addTags(tags);
-  }
-
-  public checkForUpdate(): void {
-    this.updates.available.subscribe(event => {
-      console.log(event);
-      this.updates.activateUpdate().then(() => document.location.reload());
-    });
-    // Allow the app to stabilize first, before starting polling for updates with `interval()`.
-    const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
-    const everySixHours$ = interval(6 * 60 * 60 * 1000);
-    const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
-
-    everySixHoursOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
-
   }
 
 }

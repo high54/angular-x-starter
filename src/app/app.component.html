@@ -1,4 +1,4 @@
-<main class="container" [class.dark-theme]="darkMode" [class.is-mobile]="matches">
+<main class="container" [class.dark-theme]="darkMode.value" [class.is-mobile]="matches">
   <mat-progress-bar [mode]="progressMode" value="100"></mat-progress-bar>
   <mat-toolbar color="primary" class="toolbar">
     <button [attr.aria-label]="btnAriaLabelSideNav" mat-icon-button (click)="snav.toggle()">
@@ -16,7 +16,7 @@
     <form [formGroup]="themeForm" (ngSubmit)="changeTheme()" ngNativeValidate>
       <mat-slide-toggle [attr.aria-label]="btnAriaLabelToggleDarkMode" (change)="changeTheme()"
         formControlName="darkMode">
-        <mat-icon [color]="darkMode ? 'accent' :''" aria-hidden="true">brightness_3</mat-icon>
+        <mat-icon [color]="darkMode.value ? 'accent' :''" aria-hidden="true">brightness_3</mat-icon>
       </mat-slide-toggle>
     </form>
   </mat-toolbar>
