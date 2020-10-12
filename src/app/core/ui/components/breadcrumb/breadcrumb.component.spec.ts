@@ -1,16 +1,47 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+// Components
 import { BreadcrumbComponent } from './breadcrumb.component';
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
+import { of } from 'rxjs';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 
 describe('BreadcrumbComponent', () => {
   let component: BreadcrumbComponent;
   let fixture: ComponentFixture<BreadcrumbComponent>;
-
+  const router = {
+    events: of(new NavigationEnd(1, '', ''))
+  };
+  const activatedRoute = {
+    root: {
+      routeConfig: {
+        data: {
+          breadcrumb: {
+            label: '',
+            url: 'test/test/test'
+          }
+        }
+      },
+      snapshot: {
+        params: [
+          'test'
+        ]
+      }
+    }
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BreadcrumbComponent ]
+      imports: [
+        ...materialModules
+      ],
+      declarations: [BreadcrumbComponent],
+      providers: [
+        { provide: Router, useValue: router },
+        { provide: ActivatedRoute, useValue: activatedRoute }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
