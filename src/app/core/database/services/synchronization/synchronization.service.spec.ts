@@ -5,8 +5,9 @@ import { AuthService } from 'src/app/core/auth/services';
 import { IQueue, QueueStatus } from '../../models/database.model';
 import { SynchronizationService } from './synchronization.service';
 import { StorageService } from '../storage/storage.service';
-import * as config from '../../../config/api';
-
+import { environment } from '../../../../../environments/environment';
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
 describe('Core - Database - Service - Synchronization', () => {
     let service: SynchronizationService;
     let httpMock: HttpTestingController;
@@ -19,7 +20,8 @@ describe('Core - Database - Service - Synchronization', () => {
          */
         TestBed.configureTestingModule({
             imports: [
-                HttpClientTestingModule
+                HttpClientTestingModule,
+                ...materialModules
             ],
             declarations: [
             ],
@@ -29,9 +31,9 @@ describe('Core - Database - Service - Synchronization', () => {
                 StorageService
             ],
         }).compileComponents();
-        service = TestBed.get(SynchronizationService);
-        httpMock = TestBed.get(HttpTestingController);
-        storage = TestBed.get(StorageService);
+        service = TestBed.inject(SynchronizationService);
+        httpMock = TestBed.inject(HttpTestingController);
+        storage = TestBed.inject(StorageService);
 
     }));
     afterEach(() => {
@@ -39,30 +41,6 @@ describe('Core - Database - Service - Synchronization', () => {
     });
     it('Should create the service', () => {
         expect(service).toBeTruthy();
-    });
-
-    it('Should sync the Queue', () => {
-        storage.openDB().then(() => {
-            const syncSpy = spyOn(service, 'sync').and.callThrough();
-            service.sync();
-            expect(syncSpy).toHaveBeenCalled();
-        });
-    });
-    it('Should post data', async () => {
-        storage.openDB().then(() => {
-            let valeurTemp = [];
-            storage.getWhereAll('queues', { status: QueueStatus.WAITING }).then((value: IQueue[]) => {
-                valeurTemp = value;
-                const syncSpy = spyOn(service, 'sync').and.callThrough();
-                if (valeurTemp.length > 0) {
-                    service.sync();
-                    const req = httpMock.expectOne(valeurTemp[0].uri);
-                    req.flush({ status: 200, statusText: 'OK' });
-                    expect(syncSpy).toHaveBeenCalled();
-                }
-            });
-        });
-
     });
 
 });

@@ -4,7 +4,8 @@ import { HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from 'src/app/core/auth/services';
 import { StorageService } from './storage.service';
 import { IQueue, QueueStatus } from '../../models/database.model';
-
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
 describe('Core - Database - Service - Storage', () => {
     let service: StorageService;
     beforeEach(async(() => {
@@ -15,6 +16,7 @@ describe('Core - Database - Service - Storage', () => {
          */
         TestBed.configureTestingModule({
             imports: [
+                ...materialModules
             ],
             declarations: [
             ],
@@ -24,7 +26,7 @@ describe('Core - Database - Service - Storage', () => {
                 { provide: AuthService, useValue: {} },
             ],
         }).compileComponents();
-        service = TestBed.get(StorageService);
+        service = TestBed.inject(StorageService);
     }));
     it('Should create the service', () => {
         expect(service).toBeTruthy();
@@ -59,7 +61,6 @@ describe('Core - Database - Service - Storage', () => {
         expect(addSpy).toHaveBeenCalled();
         const getTableSpy = spyOn(service, 'getTable').and.callThrough();
         const result = service.getTable('queues');
-        console.log('result', result);
         expect(getTableSpy).toHaveBeenCalled();
         const getWhereAllSpy = spyOn(service, 'getWhereAll').and.callThrough();
         service.getWhereAll('queues', { method: 'POST' }).then((val: IQueue[]) => {

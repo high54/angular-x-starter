@@ -4,7 +4,8 @@ import { OnlineOfflineService } from './online-offline.service';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from 'src/app/core/auth/services';
 import { of } from 'rxjs';
-
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
 describe('Core - Database - Service - Online Offline', () => {
     let service: OnlineOfflineService;
     beforeEach(async(() => {
@@ -15,6 +16,7 @@ describe('Core - Database - Service - Online Offline', () => {
          */
         TestBed.configureTestingModule({
             imports: [
+                ...materialModules
             ],
             declarations: [
             ],
@@ -24,7 +26,7 @@ describe('Core - Database - Service - Online Offline', () => {
                 { provide: AuthService, useValue: {} },
             ],
         }).compileComponents();
-        service = TestBed.get(OnlineOfflineService);
+        service = TestBed.inject(OnlineOfflineService);
     }));
 
     it('Should return true isOnline', () => {
