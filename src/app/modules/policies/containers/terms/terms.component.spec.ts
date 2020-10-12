@@ -1,20 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TermsComponent } from './terms.component';
-
-describe('TermsComponent', () => {
-  let component: TermsComponent;
-  let fixture: ComponentFixture<TermsComponent>;
+// Components
+import { PoliciesTermsComponent } from './terms.component';
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
+describe('PoliciesTermsComponent', () => {
+  let component: PoliciesTermsComponent;
+  let fixture: ComponentFixture<PoliciesTermsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TermsComponent ]
+      imports: [
+        ...materialModules
+      ],
+      declarations: [PoliciesTermsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TermsComponent);
+    fixture = TestBed.createComponent(PoliciesTermsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
