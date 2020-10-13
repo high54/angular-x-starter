@@ -125,12 +125,12 @@ export class AuthService {
             newUser.firstName = userApiResp.firstName;
             newUser.lastName = userApiResp.lastName;
 
-            if (this.isBrowser) {
+            if (this.isBrowser && rememberMe) {
               localStorage.setItem('currentUser', JSON.stringify(newUser));
             }
             this.currentUserSubject.next(newUser);
             return newUser;
-          }));
+          }), catchError((error: any) => throwError(JSON.stringify(error))));
       }));
   }
 
