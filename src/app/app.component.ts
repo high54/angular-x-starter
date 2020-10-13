@@ -16,9 +16,12 @@ import {
 // Services
 import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
 // RxJs
-
 import { first } from 'rxjs/operators';
 import { interval, concat } from 'rxjs';
+// Angular Material
+import { MatDialog } from '@angular/material/dialog';
+// Components
+import { InstallUpdateComponent } from './core/ui/components';
 
 
 @Component({
@@ -27,7 +30,7 @@ import { interval, concat } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @ViewChild('scrollContent', { static: false }) private scrollContent !: MatSidenavContent;
+  @ViewChild('scrollContent', { static: false }) public scrollContent !: MatSidenavContent;
   public themeForm = this.fb.group({
     darkMode: false
   });
@@ -39,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
   constructor(
+    public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private router: Router,
@@ -117,19 +121,25 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   private checkForUpdate(): void {
     if (this.updates.isEnabled) {
-      this.updates.available.subscribe(event => {
-        this.updates.activateUpdate().then(() => {
-          if (window.confirm(`Une mise à jour est disponible, souhaitez vous l'installer ?`)) {
-            document.location.reload();
-          }
-        });
-      });
       // Allow the app to stabilize first, before starting polling for updates with `interval()`.
       const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
       const everySixHours$ = interval(6 * 60 * 60 * 1000);
       const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
 
       everySixHoursOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
+      this.updates.available.subscribe(event => {
+        this.updates.activateUpdate().then(() => {
+          const dialogRef = this.dialog.open(InstallUpdateComponent, {
+            width: '250px',
+          });
+          dialogRef.afterClosed().subscribe((install) => {
+            if (install) {
+              document.location.reload();
+            }
+          });
+        });
+      });
+
     }
 
   }

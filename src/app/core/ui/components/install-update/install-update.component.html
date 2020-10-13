@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Mise à jour</h1>
+<div mat-dialog-content>
+  <p>Une mise à jour est disponible. Souhaitez vous l'installer ?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button  mat-dialog-close>Plus tard</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Installer</button>
+</div>

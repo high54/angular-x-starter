@@ -20,10 +20,10 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary', 'json-summary'],
       fixWebpackSourcePaths: true,
       thresholds: {
-        statements: 90,
-        lines: 90,
-        branches: 90,
-        functions: 90
+        statements: 70,
+        lines: 70,
+        branches: 70,
+        functions: 70
       }
     },
     reporters: ['progress', 'kjhtml'],
@@ -31,7 +31,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
   });
