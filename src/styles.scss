@@ -9,17 +9,18 @@
 @include mat-core();
 
 // Define the default theme (same as the example above).
-$candy-app-primary: mat-palette($mat-deep-purple);
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-$candy-app-theme:   mat-light-theme((
+
+$light-primary: mat-palette($mat-deep-purple);
+$light-accent:  mat-palette($mat-pink, A200, A100, A400);
+$light-theme:   mat-light-theme((
 color: (
-primary: $candy-app-primary,
-accent: $candy-app-accent,
+primary: $light-primary,
+accent: $light-accent,
 )
 ));
 
 // Include the default theme styles (color and default density)
-@include angular-material-theme($candy-app-theme);
+@include angular-material-theme($light-theme);
 
 
 // Define an alternate dark theme.
@@ -39,6 +40,21 @@ warn: $dark-warn,
 // CSS class whatever you want. In this example, any component inside of an element with
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 .dark-theme {
+
+    .mat-nav-list a.active {
+        color: mat-color($dark-accent);
+    }
+    
+    .content-flex {
+        .card {
+            &:hover {
+                .mat-card-title {
+                    color:  mat-color($dark-accent);;
+                }
+
+            }
+        }
+    }
     @include angular-material-color($dark-theme);
 }
 html, body { height: 100%; }
@@ -46,15 +62,28 @@ body { margin: 0; font-family:  'Raleway', sans-serif; }
 body:not(.dark-theme) {
     transition: all 1s linear;
 }
+
+.mat-nav-list a.active {
+    color: mat-color($light-accent);
+}
+.content-flex {
+    .card {
+        &:hover {
+            .mat-card-title {
+                color:  mat-color($light-accent);;
+            }
+        }
+    }
+}
 .card {
-    max-width: 400px;
+    max-width: 25rem;
     margin: auto;
 }
 .form-field {
     width: 100%;
 }
 .checkbox-margin {
-    margin: 0 12px;
+    margin: 0 0.75rem;
 }
 section {
     padding: 1rem;
@@ -176,6 +205,21 @@ $dark-primary: green;
         width: 60%;
         margin: auto;
     }
+    .content-flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+        .card {
+            flex: 0 32%;
+            margin-bottom: 2%;
+            
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2), 0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);
+            }
+        }
+    }
     
 }
 
@@ -240,6 +284,23 @@ $dark-primary: green;
         overflow-wrap: break-word;
     }
     
+
+    .content-flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+        .card {
+            flex: 0 90%;
+            margin-bottom: 2%;
+            
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2), 0 0.375rem 1.25rem 0 rgba(0, 0, 0, 0.19);
+            }
+        }
+    }
+
     #breadcrumb{
         li {
             a{
