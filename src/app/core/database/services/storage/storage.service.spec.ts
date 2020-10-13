@@ -1,11 +1,16 @@
 import { async, TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpTestingController } from '@angular/common/http/testing';
+import { environment } from '../../../../../environments/environment';
+// Angular Material
+import { MatSnackBar } from '@angular/material/snack-bar';
+// Services
 import { AuthService } from 'src/app/core/auth/services';
 import { StorageService } from './storage.service';
+// Modules
 import { IQueue, QueueStatus } from '../../models/database.model';
 // Mocks
 import { materialModules } from '../../../../mocks/material-modules.mock';
+
 describe('Core - Database - Service - Storage', () => {
     let service: StorageService;
     beforeEach(async(() => {
@@ -53,7 +58,7 @@ describe('Core - Database - Service - Storage', () => {
         const testData: IQueue = {
             method: 'POST',
             status: QueueStatus.WAITING,
-            uri: 'http//localhost:8000/test',
+            uri: environment.apiUrlBase,
             params: 'none'
         };
         service.openDB();
