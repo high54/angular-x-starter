@@ -9,8 +9,6 @@ import { environment } from '../../../../../environments/environment';
 // Mocks
 import { materialModules } from '../../../../mocks/material-modules.mock';
 describe('Core - Database - Service - Synchronization', () => {
-    let service: SynchronizationService;
-    let httpMock: HttpTestingController;
     let storage: StorageService;
     beforeEach(async(() => {
         /**
@@ -31,16 +29,31 @@ describe('Core - Database - Service - Synchronization', () => {
                 StorageService
             ],
         }).compileComponents();
-        service = TestBed.inject(SynchronizationService);
-        httpMock = TestBed.inject(HttpTestingController);
         storage = TestBed.inject(StorageService);
 
     }));
     afterEach(() => {
-        httpMock.verify();
+        const { httpTestingController } = setup();
+        httpTestingController.verify();
     });
+    function setup(): {
+        service: SynchronizationService;
+        httpTestingController: HttpTestingController;
+    } {
+        const service = TestBed.inject(SynchronizationService);
+        const httpTestingController = TestBed.inject(HttpTestingController);
+        return { service, httpTestingController };
+    }
     it('Should create the service', () => {
+        const { service } = setup();
         expect(service).toBeTruthy();
     });
-
+    it('should sync ', async () => {
+        const { service, httpTestingController } = setup();
+        const spy = spyOn(service, 'sync').and.callThrough();
+        await service.sync();
+        const req = httpTestingController.expectOne(`${environment.apiUrlBase}`);
+        req.flush({ status: 200 });
+        expect(spy).toHaveBeenCalled();
+    });
 });
