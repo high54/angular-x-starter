@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+// Components
 import { InstallUpdateComponent } from './install-update.component';
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
 
 describe('InstallUpdateComponent', () => {
   let component: InstallUpdateComponent;
@@ -8,9 +10,12 @@ describe('InstallUpdateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstallUpdateComponent ]
+      imports: [
+        ...materialModules
+      ],
+      declarations: [InstallUpdateComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
