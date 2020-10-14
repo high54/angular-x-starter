@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+// Components
 import { GettingStartedComponent } from './getting-started.component';
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
 
 describe('GettingStartedComponent', () => {
   let component: GettingStartedComponent;
@@ -8,9 +10,12 @@ describe('GettingStartedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GettingStartedComponent ]
+      imports: [
+        ...materialModules
+      ],
+      declarations: [GettingStartedComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
