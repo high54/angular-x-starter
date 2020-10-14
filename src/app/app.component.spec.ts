@@ -1,4 +1,4 @@
-import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, async} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -122,5 +122,14 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.matches).toBeFalse();
+  });
+
+  it(`Trigger OnInit`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.isBrowser = false;
+    app.scrollContent = { getElementRef: () => (({ nativeElement: { scrollTop: 10 } }) as ElementRef<HTMLElement>) } as MatSidenavContent;
+    app.ngOnInit();
+    expect(app.scrollContent.getElementRef().nativeElement.scrollTop).toBe(10);
   });
 });

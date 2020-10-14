@@ -38,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public btnAriaLabelSideNav = ':Button toggle side nav:Open side navigation';
   public btnAriaLabelToggleDarkMode = ':Button toggle dark mode:Activate dark mode';
   public progressMode = 'indeterminate';
-  public isBrowserPlatform = false;
+  public isBrowser = false;
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
   constructor(
@@ -54,10 +54,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private updates: SwUpdate,
     private appRef: ApplicationRef
   ) {
-    if (isPlatformBrowser(platformId)) {
-      this.isBrowserPlatform = true;
-    }
-    if (this.isBrowserPlatform) {
+    this.isBrowser = isPlatformBrowser(platformId);
+    if (this.isBrowser) {
       this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
       this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
       this.mobileQuery.addEventListener('change', this.mobileQueryListener);
@@ -66,7 +64,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    if (this.isBrowserPlatform) {
+    if (this.isBrowser) {
       this.checkForUpdate();
       this.loader();
       this.onlineOfflineService.connectionChanged.subscribe((connection) => {
@@ -86,7 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (this.isBrowserPlatform) {
+    if (this.isBrowser) {
       this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
     }
   }
@@ -98,7 +96,7 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.themeForm.get('darkMode');
   }
   get matches(): boolean {
-    return this.isBrowserPlatform ? this.mobileQuery.matches : true;
+    return this.isBrowser ? this.mobileQuery.matches : true;
   }
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
