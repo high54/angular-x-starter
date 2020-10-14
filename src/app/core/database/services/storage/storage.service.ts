@@ -38,10 +38,7 @@ export class StorageService {
      */
     public getWhereFirst(tableName: string, where: any): Promise<any> {
         return this.db[tableName].where(where).first((value) => {
-            if (value) {
-                return value;
-            }
-            return [];
+            return value ? value : [];
         }).catch((err) => {
             console.log(err);
         });
