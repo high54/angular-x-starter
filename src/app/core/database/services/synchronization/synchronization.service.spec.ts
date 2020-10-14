@@ -8,6 +8,19 @@ import { StorageService } from '../storage/storage.service';
 import { environment } from '../../../../../environments/environment';
 // Mocks
 import { materialModules } from '../../../../mocks/material-modules.mock';
+
+export class StorageServiceMock {
+    public getWhereAll(): Promise<any> {
+        return new Promise((resolve) => {
+            resolve([
+                { method: 'POST', uri: environment.apiUrlBase, payload: {} }
+            ]);
+        });
+    }
+    public delete(): Promise<any> {
+        return new Promise((resolve) => resolve());
+    }
+}
 describe('Core - Database - Service - Synchronization', () => {
     let storage: StorageService;
     beforeEach(async(() => {
@@ -26,7 +39,7 @@ describe('Core - Database - Service - Synchronization', () => {
             providers: [
                 SynchronizationService,
                 { provide: MatSnackBar, useValue: { open: () => true, dismiss: () => true } },
-                StorageService
+                { provide: StorageService, useClass: StorageServiceMock }
             ],
         }).compileComponents();
         storage = TestBed.inject(StorageService);
@@ -48,7 +61,7 @@ describe('Core - Database - Service - Synchronization', () => {
         const { service } = setup();
         expect(service).toBeTruthy();
     });
-    it('should sync ', async () => {
+    it('should sync without error', async () => {
         const { service, httpTestingController } = setup();
         const spy = spyOn(service, 'sync').and.callThrough();
         await service.sync();

@@ -39,7 +39,6 @@ export class SynchronizationService {
     private postData(element: any): void {
         this.httpClient.post<any>(element.uri, element.payload).pipe(
             map((value) => {
-                console.log(value);
                 this.storageService.delete('queues', { id: element.id }).then((deleteResult) => {
                 }).catch((err) => {
                     console.log(err);
