@@ -1,16 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+// Components
 import { IntroductionComponent } from './introduction.component';
-
+// Mocks
+import { materialModules } from '../../../../mocks/material-modules.mock';
 describe('IntroductionComponent', () => {
   let component: IntroductionComponent;
   let fixture: ComponentFixture<IntroductionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IntroductionComponent ]
+      imports: [
+        ...materialModules
+      ],
+      declarations: [IntroductionComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
