@@ -23,6 +23,8 @@ import { IUser } from '../../../interfaces/user.interface';
 export class AuthService {
   // Permet de récup les données d'un utilisateur connecté.
   public currentUser: Observable<IUser>;
+  // SSR
+  public isBrowser = false;
   /**
    * Quand l'utilisateur effectue une opération de connexion / déconnexion,
    * un événement est dispatché afin propager l'information.
@@ -32,8 +34,7 @@ export class AuthService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     observe: 'response' as 'response'
   };
-  // SSR
-  private isBrowser = false;
+
   // User label that may be displayed.
   private userLabel = new BehaviorSubject('');
   currentUserLabel = this.userLabel.asObservable();
