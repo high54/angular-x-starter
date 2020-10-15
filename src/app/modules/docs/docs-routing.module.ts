@@ -11,15 +11,33 @@ const routes: Routes = [
     },
     {
         path: 'presentation',
-        component: fromContainers.PresentationComponent
+        component: fromContainers.PresentationComponent,
+        data: {
+            breadcrumb: {
+                label: 'Présentation',
+                url: 'presentation'
+            }
+        }
     },
     {
         path: 'intro',
-        component: fromContainers.IntroductionComponent
+        component: fromContainers.IntroductionComponent,
+        data: {
+            breadcrumb: {
+                label: 'Introduction',
+                url: 'intro'
+            }
+        }
     },
     {
         path: 'start',
-        component: fromContainers.GettingStartedComponent
+        component: fromContainers.GettingStartedComponent,
+        data: {
+            breadcrumb: {
+                label: 'Getting started',
+                url: 'start'
+            }
+        }
     }
 ];
 

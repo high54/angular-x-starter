@@ -90,5 +90,4 @@ describe('Core - Database - Service - Storage', () => {
         });
         expect(deleteSpy).toHaveBeenCalled();
     });
-
 });
