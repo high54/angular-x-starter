@@ -10,6 +10,12 @@ Le projet a pour but de proposer une structure de projet prête à l'emploi pour
 
 La structure est découpée en deux sections : `Core` et `Modules`.
 
+Démarrer le projet en locale :
+
+- Après avoir cloné le projet, rendez-vous dans le dossier.
+- cmd `npm i` : Installation des packages
+- cmd `ng serve --o --configuration=fr` : Démarrage du projet et ouvrir de l'application dans le navigateur. 
+
 - [Angular X Starter](#angular-x-starter)
   - [Core](#core)
   - [Modules](#modules)
@@ -109,12 +115,6 @@ Le changement de théme est déjà inclus, il n'y a plus cas configurer vos coul
 
 
 # Documentation technique
-Démarrer l'application :
-
-- `npm i`
-
-- `ng serve:ssr`
-
 
 
 |                      Module                       |                       Documentation                       |
