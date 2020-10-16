@@ -38,6 +38,16 @@ const routes: Routes = [
                 url: 'start'
             }
         }
+    },
+    {
+        path: 'pwa',
+        component: fromContainers.ProgressiveWebAppComponent,
+        data: {
+            breadcrumb: {
+                label: 'Progressive Web App',
+                url: 'pwa'
+            }
+        }
     }
 ];
 
