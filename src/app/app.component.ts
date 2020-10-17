@@ -50,11 +50,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private storageService: StorageService,
     private synchronizationService: SynchronizationService,
     private fb: FormBuilder,
-    @Inject(PLATFORM_ID) platformId,
+    @Inject(PLATFORM_ID) private platformId,
     private updates: SwUpdate,
     private appRef: ApplicationRef
   ) {
-    this.isBrowser = isPlatformBrowser(platformId);
+    this.isBrowser = isPlatformBrowser(this.platformId);
     if (this.isBrowser) {
       this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
       this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
@@ -119,11 +119,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   private checkForUpdate(): void {
     if (this.updates.isEnabled) {
-      // Allow the app to stabilize first, before starting polling for updates with `interval()`.
       const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
       const everySixHours$ = interval(6 * 60 * 60 * 1000);
       const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
-
       everySixHoursOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
       this.updates.available.subscribe(event => {
         this.updates.activateUpdate().then(() => {
