@@ -2,8 +2,12 @@
 
 ![https://github.com/high54/angular-x-starter/blob/main/LICENSE](https://img.shields.io/github/license/high54/angular-x-starter)
 ![CI - Build](https://github.com/high54/angular-x-starter/workflows/Build/badge.svg) ![CI - TEST](https://github.com/high54/angular-x-starter/workflows/Test/badge.svg)
-[![Generic badge](https://img.shields.io/badge/Coverage-87.3%25-success.svg)](https://shields.io/)
+[![Code Coverage badge](https://img.shields.io/badge/Coverage-87.3%25-brightgreen.svg)](https://shields.io/)
 
+
+[![Angular version badge](https://img.shields.io/badge/Angular-10.1.6-blue)](https://shields.io/)
+
+https://img.shields.io/badge/Angular-10.1.6-blue
 
 Le projet a pour but de proposer une structure de projet prête à l'emploi pour le développement d'application web, mobile et de bureau.
 
