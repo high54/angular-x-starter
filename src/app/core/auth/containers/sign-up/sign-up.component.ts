@@ -4,8 +4,7 @@ import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AppService } from '../../../../app.service';
 @Component({
   selector: 'app-auth-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  templateUrl: './sign-up.component.html'
 })
 export class AuthSignUpComponent implements OnInit {
   public title = 'Sign up';

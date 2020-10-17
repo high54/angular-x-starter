@@ -3,8 +3,7 @@ import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-auth-password',
-  templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss']
+  templateUrl: './password.component.html'
 })
 export class AuthPasswordComponent implements OnInit {
   public newPasswordForm = this.fb.group({

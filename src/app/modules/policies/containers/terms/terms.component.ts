@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-policies-terms',
-  templateUrl: './terms.component.html',
-  styleUrls: ['./terms.component.scss']
+  templateUrl: './terms.component.html'
 })
 export class PoliciesTermsComponent implements OnInit {
 

@@ -7,8 +7,7 @@ import { IBreadcrumb } from '../../interfaces/breadcrumb.interface';
 
 @Component({
   selector: 'app-ui-breadcrumb',
-  templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss']
+  templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent implements OnInit {
   public breadcrumbs: IBreadcrumb[];

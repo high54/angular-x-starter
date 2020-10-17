@@ -5,8 +5,7 @@ import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-auth-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  templateUrl: './sign-in.component.html'
 })
 export class AuthSignInComponent implements OnInit {
   public title = `Sign in`;
