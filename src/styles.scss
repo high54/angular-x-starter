@@ -31,7 +31,7 @@ $dark-theme:   mat-dark-theme((
 color: (
 primary: $dark-primary,
 accent: $dark-accent,
-warn: $dark-warn,
+warn: $dark-warn
 )
 ));
 
@@ -40,7 +40,7 @@ warn: $dark-warn,
 // CSS class whatever you want. In this example, any component inside of an element with
 // `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
 .dark-theme {
-
+    
     .mat-nav-list a.active {
         color: mat-color($dark-accent);
     }
@@ -49,9 +49,18 @@ warn: $dark-warn,
         .card {
             &:hover {
                 .mat-card-title {
-                    color:  mat-color($dark-accent);;
+                    color:  mat-color($dark-accent);
                 }
-
+                
+            }
+        }
+    }
+    #breadcrumb {
+        #breadcrumb-list{
+            li{
+                a{
+                    color: mat-color($dark-primary);
+                }
             }
         }
     }
@@ -99,9 +108,6 @@ footer {
         margin:auto;
     }
 }
-$primary: red;
-$secondary: blue;
-$dark-primary: green;
 
 #breadcrumb {
     display: table;
@@ -121,27 +127,11 @@ $dark-primary: green;
         li{
             float:left;
             a{
-                display:block;
+                display: inline-block;
                 text-decoration: none;
                 position:relative;
-                height: 2rem;
-                line-height: 2rem;
-                padding: 0 0.625rem 0 0.3125rem;
                 text-align: center;
-                margin-right: 1.4375rem;
-            }
-            &:nth-child(even){
-                a{
-                    background-color: $secondary;
-                    
-                    &:before{
-                        border-color:$secondary;
-                        border-left-color:transparent;
-                    }
-                    &:after{
-                        border-left-color:$secondary;
-                    }
-                }
+                color: mat-color($light-primary);
             }
             &:first-child{
                 a{
@@ -169,26 +159,13 @@ $dark-primary: green;
             }
             
             a {
-                &:before,
-                &:after{
-                    content: "";
-                    position:absolute;
-                    top: 0;
-                    border:0 solid $primary;
-                    border-width: 1rem 0.625rem;
-                    width: 0;
-                    height: 0;
-                }
                 &:before{
                     left:-1.25rem;
                     border-left-color:transparent;
                 }
-                &:after{
-                    left:100%;
-                    border-color:transparent;
-                    border-left-color:$primary;
-                }
-                
+            }
+            span {
+                margin-right: 0.625rem;
             }
         }
     }
@@ -273,7 +250,6 @@ $dark-primary: green;
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
-    
     //CSS
     .content-center {
         width: 90%;
@@ -284,7 +260,7 @@ $dark-primary: green;
         overflow-wrap: break-word;
     }
     
-
+    
     .content-flex {
         display: flex;
         flex-wrap: wrap;
@@ -300,7 +276,7 @@ $dark-primary: green;
             }
         }
     }
-
+    
     #breadcrumb{
         li {
             a{
