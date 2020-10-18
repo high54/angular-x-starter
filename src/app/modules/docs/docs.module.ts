@@ -5,10 +5,13 @@ import { DocsRoutingModule } from './docs-routing.module';
 import { DocsMaterialModule } from './docs-material.module';
 // Containers
 import * as fromContainers from './containers';
+// Ngx Markdown
+import { MarkdownModule } from 'ngx-markdown';
 @NgModule({
     imports: [
         DocsRoutingModule,
-        DocsMaterialModule
+        DocsMaterialModule,
+        MarkdownModule
     ],
     declarations: [
         ...fromContainers.containers

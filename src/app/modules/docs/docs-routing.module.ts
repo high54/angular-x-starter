@@ -48,6 +48,26 @@ const routes: Routes = [
                 url: 'pwa'
             }
         }
+    },
+    {
+        path: 'ssr',
+        component: fromContainers.ServerSideRenderingComponent,
+        data: {
+            breadcrumb: {
+                label: 'Server side rendering',
+                url: 'ssr'
+            }
+        }
+    },
+    {
+        path: 'seo',
+        component: fromContainers.SearchEngineOptimizationComponent,
+        data: {
+            breadcrumb: {
+                label: 'Search Engine Optimization',
+                url: 'seo'
+            }
+        }
     }
 ];
 
