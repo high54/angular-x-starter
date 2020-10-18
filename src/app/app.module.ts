@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -18,6 +18,8 @@ import { DatabaseModule } from './core/database/database.module';
 import { UIModule } from './core/ui/ui.module';
 // Components
 import { AppComponent } from './app.component';
+// Ngx Markdown
+import { MarkdownModule } from 'ngx-markdown';
 @NgModule({
   declarations: [
     AppComponent
@@ -32,7 +34,8 @@ import { AppComponent } from './app.component';
     AuthModule,
     DatabaseModule,
     UIModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    MarkdownModule.forRoot({ loader: HttpClient }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
   ],

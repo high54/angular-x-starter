@@ -30,24 +30,24 @@
         <a mat-list-item routerLink="docs/presentation" i18n="site navigation|Link to the docs presentation page"
           routerLinkActive="active" [routerLinkActiveOptions]="{exact:
           true}">Présentation</a>
-
-        <mat-expansion-panel [class.mat-elevation-z0]="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Getting Started
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-nav-list dense>
-            <a mat-list-item routerLink="docs/intro" i18n="site navigation|Link to the docs introduction page"
-              routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                true}">Introduction</a>
-            <a mat-list-item routerLink="docs/start" i18n="site navigation|Link to the getting started page"
-              routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-              true}">Getting
-              started</a>
-          </mat-nav-list>
-        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="docs/start" i18n="site navigation|Link to the getting started page"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">Getting
+          started</a>
+        <a mat-list-item routerLink="docs/pwa" i18n="site navigation|Link to the progressive web app documentation page"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">Progressive Web App</a>
+        <a mat-list-item routerLink="docs/ssr"
+          i18n="site navigation|Link to the server side rendering documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Server Side Rendering</a>
+        <a mat-list-item routerLink="docs/seo"
+          i18n="site navigation|Link to the search engine optimization documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Search Engine Optimization</a>
         <div *ngIf="matches">
+          <mat-divider></mat-divider>
           <a mat-list-item routerLink="sign_up" i18n="site navigation|Link to the register page"
             routerLinkActive="active" [routerLinkActiveOptions]="{exact:
             true}">Register</a>

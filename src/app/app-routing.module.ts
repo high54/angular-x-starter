@@ -14,7 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'docs',
-    loadChildren: () => import('./modules/docs/docs.module').then((m) => m.DocsModule)
+    loadChildren: () => import('./modules/docs/docs.module').then((m) => m.DocsModule),
+    data: {
+      breadcrumb: {
+        label: 'Documentation',
+        url: 'docs'
+      }
+    }
   }
 ];
 
