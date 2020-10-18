@@ -16,7 +16,7 @@ Démarrer le projet en locale :
 
 - Après avoir cloné le projet, rendez-vous dans le dossier.
 - cmd `npm i` : Installation des packages
-- cmd `ng serve --o --configuration=fr` : Démarrage du projet et ouvrir de l'application dans le navigateur. 
+- cmd `ng serve --o --configuration=fr` : Démarrage du projet et ouverture de l'application dans le navigateur. 
 
 - [Angular X Starter](#angular-x-starter)
   - [Core](#core)
