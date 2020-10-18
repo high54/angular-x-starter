@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --configuration=fr",
     "build": "ng build",
     "test": "ng test --code-coverage",
     "test:ci": "ng test --code-coverage --watch=false",
@@ -34,6 +34,7 @@
     "dexie": "^3.0.2",
     "express": "^4.15.2",
     "material-design-icons": "^3.0.1",
+    "ngx-markdown": "^10.1.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
