@@ -7,7 +7,6 @@
 
 [![Angular version badge](https://img.shields.io/badge/Angular-10.1.6-blue)](https://shields.io/)
 
-https://img.shields.io/badge/Angular-10.1.6-blue
 
 Le projet a pour but de proposer une structure de projet prête à l'emploi pour le développement d'application web, mobile et de bureau.
 
