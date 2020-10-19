@@ -68,6 +68,46 @@ const routes: Routes = [
                 url: 'seo'
             }
         }
+    },
+    {
+        path: 'i18n',
+        component: fromContainers.InternationalizationComponent,
+        data: {
+            breadcrumb: {
+                label: 'Internationalization',
+                url: 'i18n'
+            }
+        }
+    },
+    {
+        path: 'a11y',
+        component: fromContainers.AccessibilityComponent,
+        data: {
+            breadcrumb: {
+                label: 'Accessibility',
+                url: 'a11y'
+            }
+        }
+    },
+    {
+        path: 'offline-sync',
+        component: fromContainers.OfflineSyncComponent,
+        data: {
+            breadcrumb: {
+                label: 'Offline Synchronization',
+                url: 'offline-sync'
+            }
+        }
+    },
+    {
+        path: 'responsive-design',
+        component: fromContainers.ResponsiveDesignComponent,
+        data: {
+            breadcrumb: {
+                label: 'Responsive design',
+                url: 'responsive-design'
+            }
+        }
     }
 ];
 
