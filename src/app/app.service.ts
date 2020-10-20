@@ -1,6 +1,5 @@
-import { Injectable, ApplicationRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { SwUpdate } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -15,7 +14,7 @@ export class AppService {
     this.metaService.addTag({ property: 'og:site_name', content: environment.appName });
   }
 
-  public setTitle(title: string): void {
+  set title(title: string) {
     this.metaService.removeTag('property="og:title"');
     this.metaService.removeTag('name="twitter:title"');
     this.titleService.setTitle(`${environment.appName} - ${title}`);
@@ -23,7 +22,7 @@ export class AppService {
     this.metaService.addTag({ name: 'twitter:title', content: `${environment.appName} - ${title}` });
   }
 
-  public setDescription(description: string): void {
+  set description(description: string) {
     this.metaService.removeTag('name="description"');
     this.metaService.removeTag('name="twitter:description"');
     this.metaService.removeTag('property="og:description"');
