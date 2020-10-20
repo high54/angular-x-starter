@@ -108,6 +108,16 @@ const routes: Routes = [
                 url: 'responsive-design'
             }
         }
+    },
+    {
+        path: 'dark-mode',
+        component: fromContainers.DarkModeComponent,
+        data: {
+            breadcrumb: {
+                label: 'Dark mode',
+                url: 'dark-mode'
+            }
+        }
     }
 ];
 
