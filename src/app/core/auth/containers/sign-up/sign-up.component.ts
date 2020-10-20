@@ -24,13 +24,13 @@ export class AuthSignUpComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.appService.setTitle(this.title);
+    this.appService.title = this.title;
     this.appService.addTags([
       { property: 'og:type', content: 'article' },
       { name: 'keywords', content: 'Angular, Universal, Example' },
       { name: 'robots', content: 'index, follow' }
     ]);
-    this.appService.setDescription(' ');
+    this.appService.description = '';
   }
   public submitForm(): boolean {
     const { valid } = this.signUpForm;

@@ -21,7 +21,7 @@ export class AuthSignInComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.appService.setTitle(this.title);
+    this.appService.title = this.title;
   }
   public submitForm(): boolean {
     const { valid } = this.signInForm;
