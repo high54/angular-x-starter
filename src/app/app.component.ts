@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject, ApplicationRef } from '@angular/core';
-import { FormBuilder, AbstractControl } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { isPlatformBrowser } from '@angular/common';
@@ -31,14 +30,13 @@ import { InstallUpdateComponent } from './core/ui/components';
 })
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('scrollContent', { static: false }) public scrollContent !: MatSidenavContent;
-  public themeForm = this.fb.group({
-    darkMode: false
-  });
+
   public title = $localize`:Application name:${environment.appName}`;
   public btnAriaLabelSideNav = ':Button toggle side nav:Open side navigation';
   public btnAriaLabelToggleDarkMode = ':Button toggle dark mode:Activate dark mode';
   public progressMode = 'indeterminate';
   public isBrowser = false;
+  public darkMode = false;
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
   constructor(
@@ -49,7 +47,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private onlineOfflineService: OnlineOfflineService,
     private storageService: StorageService,
     private synchronizationService: SynchronizationService,
-    private fb: FormBuilder,
     @Inject(PLATFORM_ID) private platformId,
     private updates: SwUpdate,
     private appRef: ApplicationRef
@@ -78,7 +75,7 @@ export class AppComponent implements OnInit, OnDestroy {
       });
       const darkMode = localStorage.getItem('darkMode');
       if (darkMode !== null) {
-        this.themeForm.patchValue({ darkMode: darkMode === 'true' });
+        this.darkMode = darkMode === 'true';
       }
     }
   }
@@ -89,12 +86,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   public changeTheme(): void {
-    const { value } = this.themeForm;
-    localStorage.setItem('darkMode', value.darkMode.toString());
+    this.darkMode = !this.darkMode;
+    localStorage.setItem('darkMode', this.darkMode.toString());
   }
-  get darkMode(): AbstractControl {
-    return this.themeForm.get('darkMode');
-  }
+
   get matches(): boolean {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }

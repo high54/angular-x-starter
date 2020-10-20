@@ -113,7 +113,7 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     const darkMode = false;
     localStorage.setItem('darkMode', darkMode.toString());
-    app.darkMode.setValue(darkMode);
+    app.darkMode = darkMode;
     app.changeTheme();
     expect((localStorage.getItem('darkMode') === 'false')).toBeTrue();
   });

@@ -1,4 +1,4 @@
-<main class="container" [class.dark-theme]="darkMode.value" [class.is-mobile]="matches">
+<main class="container" [class.dark-theme]="darkMode" [class.is-mobile]="matches">
   <mat-progress-bar [mode]="progressMode" value="100"></mat-progress-bar>
   <mat-toolbar color="primary" class="toolbar">
     <button [attr.aria-label]="btnAriaLabelSideNav" mat-icon-button (click)="snav.toggle()">
@@ -14,12 +14,9 @@
         true}" i18n="site navigation|Link to the sign-in page">Sign-in</a>
       <mat-divider></mat-divider>
     </div>
-    <form [formGroup]="themeForm" (ngSubmit)="changeTheme()" ngNativeValidate>
-      <mat-slide-toggle [attr.aria-label]="btnAriaLabelToggleDarkMode" (change)="changeTheme()"
-        formControlName="darkMode">
-        <mat-icon [color]="darkMode.value ? 'accent' :''" aria-hidden="true">brightness_3</mat-icon>
-      </mat-slide-toggle>
-    </form>
+      <button mat-button [attr.aria-label]="btnAriaLabelToggleDarkMode" (click)="changeTheme()">
+        <mat-icon [color]="darkMode ? 'accent' :''" aria-hidden="true">brightness_3</mat-icon>
+      </button>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="matches ? 56 : 0">
@@ -46,6 +43,33 @@
           i18n="site navigation|Link to the search engine optimization documentation page" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:
           true}">Search Engine Optimization</a>
+
+          <a mat-list-item routerLink="docs/i18n"
+          i18n="site navigation|Link to the internationalization documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Internationalization</a>
+
+          
+          <a mat-list-item routerLink="docs/a11y"
+          i18n="site navigation|Link to the accessibility documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Accessibility</a>
+
+          <a mat-list-item routerLink="docs/offline-sync"
+          i18n="site navigation|Link to the Offline synchronization documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Offline synchronization</a>
+
+
+          <a mat-list-item routerLink="docs/responsive-design"
+          i18n="site navigation|Link to the Responsive design documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Responsive design</a>
+
+          <a mat-list-item routerLink="docs/dark-mode"
+          i18n="site navigation|Link to the Dark mode documentation page" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:
+          true}">Dark mode</a>
         <div *ngIf="matches">
           <mat-divider></mat-divider>
           <a mat-list-item routerLink="sign_up" i18n="site navigation|Link to the register page"
