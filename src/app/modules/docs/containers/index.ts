@@ -8,6 +8,7 @@ import { InternationalizationComponent } from './internationalization/internatio
 import { AccessibilityComponent } from './accessibility/accessibility.component';
 import { OfflineSyncComponent } from './offline-sync/offline-sync.component';
 import { ResponsiveDesignComponent } from './responsive-design/responsive-design.component';
+import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
 export const containers: any[] = [
     GettingStartedComponent,
@@ -19,7 +20,8 @@ export const containers: any[] = [
     InternationalizationComponent,
     AccessibilityComponent,
     OfflineSyncComponent,
-    ResponsiveDesignComponent
+    ResponsiveDesignComponent,
+    DarkModeComponent
 ];
 
 export * from './getting-started/getting-started.component';
@@ -32,3 +34,4 @@ export * from './internationalization/internationalization.component';
 export * from './accessibility/accessibility.component';
 export * from './offline-sync/offline-sync.component';
 export * from './responsive-design/responsive-design.component';
+export * from './dark-mode/dark-mode.component';
