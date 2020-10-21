@@ -1,4 +1,4 @@
-import { TestBed, async} from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -114,7 +114,6 @@ describe('AppComponent', () => {
     const darkMode = false;
     localStorage.setItem('darkMode', darkMode.toString());
     app.darkMode = darkMode;
-    app.changeTheme();
     expect((localStorage.getItem('darkMode') === 'false')).toBeTrue();
   });
 
