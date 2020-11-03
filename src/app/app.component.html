@@ -14,9 +14,50 @@
         true}" i18n="site navigation|Link to the sign-in page">Sign-in</a>
       <mat-divider></mat-divider>
     </div>
-      <button mat-button [attr.aria-label]="btnAriaLabelToggleDarkMode" (click)="changeTheme()">
-        <mat-icon [color]="darkMode ? 'accent' :''" aria-hidden="true">brightness_3</mat-icon>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="themes">
+        <mat-icon>settings_brightness</mat-icon>
+        Apparence : {{ darkMode ? 'Thème foncé' : 'Thème clair'}}
       </button>
+      <button mat-menu-item [matMenuTriggerFor]="langues">
+        <mat-icon>translate</mat-icon>
+        Langues : {{ langague === 'en' ? 'english' : 'français'}}
+      </button>
+
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        Paramètres
+      </button>
+    </mat-menu>
+
+    <mat-menu #themes="matMenu">
+      <mat-radio-group [(ngModel)]="darkMode" class="example-radio-group">
+        <mat-radio-button [value]="false" class="example-radio-button">
+          Thème clair
+        </mat-radio-button>
+        <mat-radio-button [value]="true" class="example-radio-button">
+          Thème foncé
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-menu>
+
+
+    <mat-menu #langues="matMenu">
+      <mat-radio-group [(ngModel)]="langague" class="example-radio-group">
+        <mat-radio-button (click)="changeLanguage('en')" [value]="'en'" class="example-radio-button">
+          English (UK)
+        </mat-radio-button>
+        <mat-radio-button (click)="changeLanguage('fr')" [value]="'fr'" class="example-radio-button">
+          Français
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-menu>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="matches ? 56 : 0">
@@ -44,31 +85,29 @@
           [routerLinkActiveOptions]="{exact:
           true}">Search Engine Optimization</a>
 
-          <a mat-list-item routerLink="docs/i18n"
+        <a mat-list-item routerLink="docs/i18n"
           i18n="site navigation|Link to the internationalization documentation page" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:
           true}">Internationalization</a>
 
-          
-          <a mat-list-item routerLink="docs/a11y"
-          i18n="site navigation|Link to the accessibility documentation page" routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact:
+
+        <a mat-list-item routerLink="docs/a11y" i18n="site navigation|Link to the accessibility documentation page"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact:
           true}">Accessibility</a>
 
-          <a mat-list-item routerLink="docs/offline-sync"
+        <a mat-list-item routerLink="docs/offline-sync"
           i18n="site navigation|Link to the Offline synchronization documentation page" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:
           true}">Offline synchronization</a>
 
 
-          <a mat-list-item routerLink="docs/responsive-design"
+        <a mat-list-item routerLink="docs/responsive-design"
           i18n="site navigation|Link to the Responsive design documentation page" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:
           true}">Responsive design</a>
 
-          <a mat-list-item routerLink="docs/dark-mode"
-          i18n="site navigation|Link to the Dark mode documentation page" routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact:
+        <a mat-list-item routerLink="docs/dark-mode" i18n="site navigation|Link to the Dark mode documentation page"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact:
           true}">Dark mode</a>
         <div *ngIf="matches">
           <mat-divider></mat-divider>

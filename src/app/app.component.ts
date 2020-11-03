@@ -37,8 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
   public progressMode = 'indeterminate';
   public isBrowser = false;
   public darkMode = false;
+  public langague = 'fr';
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
+
   constructor(
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
@@ -60,6 +62,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
+  get matches(): boolean {
+    return this.isBrowser ? this.mobileQuery.matches : true;
+  }
+
   public ngOnInit(): void {
     if (this.isBrowser) {
       this.checkForUpdate();
@@ -77,6 +83,11 @@ export class AppComponent implements OnInit, OnDestroy {
       if (darkMode !== null) {
         this.darkMode = darkMode === 'true';
       }
+      const langague = localStorage.getItem('langague');
+      if (langague !== null && langague !== this.checkUrl()) {
+        this.langague = langague;
+        window.location.replace(`http://${window.location.host}/${this.langague}`);
+      }
     }
   }
 
@@ -89,10 +100,17 @@ export class AppComponent implements OnInit, OnDestroy {
     this.darkMode = !this.darkMode;
     localStorage.setItem('darkMode', this.darkMode.toString());
   }
-
-  get matches(): boolean {
-    return this.isBrowser ? this.mobileQuery.matches : true;
+  public changeLanguage(langague: string): void {
+    this.langague = langague;
+    localStorage.setItem('langague', this.langague);
+    window.location.replace(`http://${window.location.host}/${this.langague}`);
   }
+
+  private checkUrl(): string {
+    console.log(window.location.href.split('/'))
+    return window.location.href.split('/')[3];
+  }
+
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
       switch (true) {

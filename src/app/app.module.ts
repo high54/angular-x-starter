@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -20,6 +20,7 @@ import { UIModule } from './core/ui/ui.module';
 import { AppComponent } from './app.component';
 // Ngx Markdown
 import { MarkdownModule } from 'ngx-markdown';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -29,6 +30,7 @@ import { MarkdownModule } from 'ngx-markdown';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     AppMaterialModule,
     AuthModule,
