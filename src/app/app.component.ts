@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject, ApplicationRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject, ApplicationRef, AfterViewInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { isPlatformBrowser } from '@angular/common';
@@ -21,6 +21,7 @@ import { interval, concat } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 // Components
 import { InstallUpdateComponent } from './core/ui/components';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -28,7 +29,7 @@ import { InstallUpdateComponent } from './core/ui/components';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('scrollContent', { static: false }) public scrollContent !: MatSidenavContent;
 
   public title = $localize`:Application name:${environment.appName}`;
@@ -37,7 +38,15 @@ export class AppComponent implements OnInit, OnDestroy {
   public progressMode = 'indeterminate';
   public isBrowser = false;
   public darkMode = false;
-  public langague = 'fr';
+  public langague: string;
+  public themeForm = this.fb.group({
+    theme: [false]
+  });
+  public languageForm = this.fb.group({
+    language: ''
+  });
+
+
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
 
@@ -51,7 +60,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private synchronizationService: SynchronizationService,
     @Inject(PLATFORM_ID) private platformId,
     private updates: SwUpdate,
-    private appRef: ApplicationRef
+    private appRef: ApplicationRef,
+    private fb: FormBuilder
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     if (this.isBrowser) {
@@ -65,7 +75,45 @@ export class AppComponent implements OnInit, OnDestroy {
   get matches(): boolean {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }
+  ngAfterViewInit() {
+    this.test();
+  }
+  public test() {
+    if (this.isBrowser) {
 
+      const language = localStorage.getItem('language');
+      if (language !== null) {
+        this.languageForm.patchValue({ language });
+        this.langague = language;
+        if (language !== this.getCurrentLanguage()) {
+
+          const href = window.location.href.split('/');
+          let rest = '';
+          if (href.length > 4) {
+            href.splice(0, 4);
+            rest = href.join('/');
+          }
+          const url = `http://${window.location.host}/${this.langague}/${rest}`;
+          this.redirect(url);
+        }
+      } else {
+        this.langague = navigator.language.split('-')[0] === 'fr' ? 'fr' : 'en';
+        this.languageForm.patchValue({ language: this.langague });
+        const href = window.location.href.split('/');
+        let rest = '';
+        if (href.length > 4) {
+          href.splice(0, 4);
+          rest = href.join('/');
+        }
+        if (this.langague !== this.getCurrentLanguage()) {
+
+          const url = `http://${window.location.host}/${this.langague}/${rest}`;
+          this.redirect(url);
+        }
+
+      }
+    }
+  }
   public ngOnInit(): void {
     if (this.isBrowser) {
       this.checkForUpdate();
@@ -82,11 +130,9 @@ export class AppComponent implements OnInit, OnDestroy {
       const darkMode = localStorage.getItem('darkMode');
       if (darkMode !== null) {
         this.darkMode = darkMode === 'true';
-      }
-      const langague = localStorage.getItem('langague');
-      if (langague !== null && langague !== this.checkUrl()) {
-        this.langague = langague;
-        window.location.replace(`http://${window.location.host}/${this.langague}`);
+        this.themeForm.patchValue({
+          theme: darkMode === 'true'
+        });
       }
     }
   }
@@ -97,17 +143,28 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   public changeTheme(): void {
-    this.darkMode = !this.darkMode;
-    localStorage.setItem('darkMode', this.darkMode.toString());
+    const { value } = this.themeForm;
+    this.darkMode = value.theme;
+    localStorage.setItem('darkMode', value.theme.toString());
   }
-  public changeLanguage(langague: string): void {
-    this.langague = langague;
-    localStorage.setItem('langague', this.langague);
-    window.location.replace(`http://${window.location.host}/${this.langague}`);
-  }
+  public changeLanguage(): void {
+    const { value } = this.languageForm;
+    this.langague = value.language;
+    localStorage.setItem('language', this.langague);
+    const href = window.location.href.split('/');
+    let rest = '';
+    if (href.length > 4) {
+      href.splice(0, 4);
+      rest = href.join('/');
+    }
+    const url = `http://${window.location.host}/${this.langague}/${rest}`;
+    this.redirect(url);
 
-  private checkUrl(): string {
-    console.log(window.location.href.split('/'))
+  }
+  private redirect(url: string): void {
+    window.location.replace(url);
+  }
+  private getCurrentLanguage(): string {
     return window.location.href.split('/')[3];
   }
 
