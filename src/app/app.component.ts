@@ -1,4 +1,14 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, PLATFORM_ID, Inject, ApplicationRef, AfterViewInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ViewChild,
+  PLATFORM_ID,
+  Inject,
+  ApplicationRef
+} from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { isPlatformBrowser } from '@angular/common';
@@ -30,7 +40,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild('scrollContent', { static: false }) public scrollContent !: MatSidenavContent;
+  @ViewChild('scrollContent', { static: true }) public scrollContent !: MatSidenavContent;
 
   public title = $localize`:Application name:${environment.appName}`;
   public btnAriaLabelSideNav = ':Button toggle side nav:Open side navigation';
@@ -45,7 +55,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public languageForm = this.fb.group({
     language: ''
   });
-
 
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
@@ -75,49 +84,15 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   get matches(): boolean {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }
-  ngAfterViewInit() {
-    this.test();
+  public ngAfterViewInit(): void {
+    this.trackingLocation();
+    this.loadTheme();
+    this.loader();
   }
-  public test() {
-    if (this.isBrowser) {
 
-      const language = localStorage.getItem('language');
-      if (language !== null) {
-        this.languageForm.patchValue({ language });
-        this.langague = language;
-        if (language !== this.getCurrentLanguage()) {
-
-          const href = window.location.href.split('/');
-          let rest = '';
-          if (href.length > 4) {
-            href.splice(0, 4);
-            rest = href.join('/');
-          }
-          const url = `http://${window.location.host}/${this.langague}/${rest}`;
-          this.redirect(url);
-        }
-      } else {
-        this.langague = navigator.language.split('-')[0] === 'fr' ? 'fr' : 'en';
-        this.languageForm.patchValue({ language: this.langague });
-        const href = window.location.href.split('/');
-        let rest = '';
-        if (href.length > 4) {
-          href.splice(0, 4);
-          rest = href.join('/');
-        }
-        if (this.langague !== this.getCurrentLanguage()) {
-
-          const url = `http://${window.location.host}/${this.langague}/${rest}`;
-          this.redirect(url);
-        }
-
-      }
-    }
-  }
   public ngOnInit(): void {
     if (this.isBrowser) {
       this.checkForUpdate();
-      this.loader();
       this.onlineOfflineService.connectionChanged.subscribe((connection) => {
         if (connection) {
           this.storageService.openDB().then((isOpen: boolean) => {
@@ -127,16 +102,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
           });
         }
       });
-      const darkMode = localStorage.getItem('darkMode');
-      if (darkMode !== null) {
-        this.darkMode = darkMode === 'true';
-        this.themeForm.patchValue({
-          theme: darkMode === 'true'
-        });
-      }
     }
   }
-
   public ngOnDestroy(): void {
     if (this.isBrowser) {
       this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
@@ -151,18 +118,46 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     const { value } = this.languageForm;
     this.langague = value.language;
     localStorage.setItem('language', this.langague);
-    const href = window.location.href.split('/');
-    let rest = '';
-    if (href.length > 4) {
-      href.splice(0, 4);
-      rest = href.join('/');
-    }
-    const url = `http://${window.location.host}/${this.langague}/${rest}`;
-    this.redirect(url);
+    this.redirect();
 
   }
-  private redirect(url: string): void {
-    window.location.replace(url);
+  private loadTheme(): void {
+    if (this.isBrowser) {
+      const darkMode = localStorage.getItem('darkMode');
+      if (darkMode !== null) {
+        this.darkMode = darkMode === 'true';
+        this.themeForm.patchValue({
+          theme: darkMode === 'true'
+        });
+      }
+    }
+  }
+  private trackingLocation(): void {
+    if (this.isBrowser) {
+      const language = localStorage.getItem('language');
+      if (language !== null) {
+        this.langague = language;
+        if (language !== this.getCurrentLanguage()) {
+          this.redirect();
+        }
+        this.languageForm.patchValue({ language });
+
+      } else {
+        this.langague = navigator.language.split('-')[0] === 'fr' ? 'fr' : 'en';
+        this.languageForm.patchValue({ language: this.langague });
+        if (this.langague !== this.getCurrentLanguage()) {
+          this.redirect();
+        }
+
+      }
+    }
+  }
+  private createUrl(): string {
+    const [protocol, , host, , ...rest] = window.location.href.split('/');
+    return `${protocol}//${host}/${this.langague}/${rest.join('/')}`;
+  }
+  private redirect(): void {
+    window.location.replace(this.createUrl());
   }
   private getCurrentLanguage(): string {
     return window.location.href.split('/')[3];
