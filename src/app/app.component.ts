@@ -9,6 +9,7 @@ import {
   Inject,
   ApplicationRef
 } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavContent } from '@angular/material/sidenav';
 import { isPlatformBrowser } from '@angular/common';
@@ -31,8 +32,6 @@ import { interval, concat } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 // Components
 import { InstallUpdateComponent } from './core/ui/components';
-import { FormBuilder } from '@angular/forms';
-
 
 @Component({
   selector: 'app-root',
@@ -52,6 +51,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public themeForm = this.fb.group({
     theme: [false]
   });
+
   public languageForm = this.fb.group({
     language: ''
   });
