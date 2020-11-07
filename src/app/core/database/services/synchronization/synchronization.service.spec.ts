@@ -42,7 +42,6 @@ describe('Core - Database - Service - Synchronization', () => {
                 { provide: StorageService, useClass: StorageServiceMock }
             ],
         }).compileComponents();
-        storage = TestBed.inject(StorageService);
 
     }));
     afterEach(() => {
