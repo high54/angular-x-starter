@@ -20,16 +20,6 @@ const routes: Routes = [
         }
     },
     {
-        path: 'intro',
-        component: fromContainers.IntroductionComponent,
-        data: {
-            breadcrumb: {
-                label: 'Introduction',
-                url: 'intro'
-            }
-        }
-    },
-    {
         path: 'start',
         component: fromContainers.GettingStartedComponent,
         data: {
