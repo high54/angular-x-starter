@@ -64,6 +64,7 @@ describe('Core - Database - Service - Storage', () => {
         service.add('queues', testData);
         expect(addSpy).toHaveBeenCalled();
         const getTableSpy = spyOn(service, 'getTable').and.callThrough();
+        const result = service.getTable('queues');
         expect(getTableSpy).toHaveBeenCalled();
         const getWhereAllSpy = spyOn(service, 'getWhereAll').and.callThrough();
         service.getWhereAll('queues', { method: 'POST' }).then((val: IQueue[]) => {
