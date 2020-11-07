@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { ResponsiveDesignComponent } from './responsive-design.component';
 
@@ -6,9 +7,10 @@ describe('ResponsiveDesignComponent', () => {
   let component: ResponsiveDesignComponent;
   let fixture: ComponentFixture<ResponsiveDesignComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponsiveDesignComponent ]
+      declarations: [ ResponsiveDesignComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

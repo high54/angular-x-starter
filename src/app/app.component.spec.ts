@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -61,7 +61,7 @@ const dialogMock = {
 };
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
@@ -102,11 +102,17 @@ describe('AppComponent', () => {
   it(`Trigger OnInit`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    const spy = spyOn(synchronizationService, 'sync').and.callFake(() => ({}));
     app.scrollContent = { getElementRef: () => (({ nativeElement: { scrollTop: 10 } }) as ElementRef<HTMLElement>) } as MatSidenavContent;
     app.ngOnInit();
     expect(app.scrollContent.getElementRef().nativeElement.scrollTop).toBe(10);
   });
+
+  it(`Trigger ngAfterViewInit`, waitForAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.isBrowser = false;
+    app.ngAfterViewInit();
+  }));
 
   it('changeTheme to darkmode', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -114,8 +120,12 @@ describe('AppComponent', () => {
     const darkMode = false;
     localStorage.setItem('darkMode', darkMode.toString());
     app.darkMode = darkMode;
-    expect((localStorage.getItem('darkMode') === 'false')).toBeTrue();
+    app.themeForm.get('theme').setValue(true);
+    app.changeTheme();
+    expect((localStorage.getItem('darkMode') === 'true')).toBeTrue();
   });
+
+
 
   it(`get matches`, () => {
     const fixture = TestBed.createComponent(AppComponent);

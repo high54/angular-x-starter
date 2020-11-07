@@ -1,14 +1,14 @@
-import { async, TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+// Angular Material
 import { MatSnackBar } from '@angular/material/snack-bar';
+// Services
 import { OnlineOfflineService } from './online-offline.service';
-import { HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from 'src/app/core/auth/services';
-import { of } from 'rxjs';
 // Mocks
 import { materialModules } from '../../../../mocks/material-modules.mock';
 describe('Core - Database - Service - Online Offline', () => {
     let service: OnlineOfflineService;
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         /**
          * Agit comme un NgModule, on déclare est importe ce qui est utilisé
          * dans le composant/Service/Pipe/etc et dans le test en lui même.

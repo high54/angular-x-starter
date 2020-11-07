@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 // Components
 import { PresentationComponent } from './presentation.component';
 // Mocks
@@ -7,12 +8,13 @@ describe('PresentationComponent', () => {
   let component: PresentationComponent;
   let fixture: ComponentFixture<PresentationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         ...materialModules
       ],
-      declarations: [PresentationComponent]
+      declarations: [PresentationComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));

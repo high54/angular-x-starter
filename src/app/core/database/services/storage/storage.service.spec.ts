@@ -1,5 +1,4 @@
-import { async, TestBed } from '@angular/core/testing';
-import { HttpTestingController } from '@angular/common/http/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { environment } from '../../../../../environments/environment';
 // Angular Material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,7 +12,7 @@ import { materialModules } from '../../../../mocks/material-modules.mock';
 
 describe('Core - Database - Service - Storage', () => {
     let service: StorageService;
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         /**
          * Agit comme un NgModule, on déclare est importe ce qui est utilisé
          * dans le composant/Service/Pipe/etc et dans le test en lui même.

@@ -1,11 +1,11 @@
-import { async, TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { AuthService } from 'src/app/core/auth/services';
-import { IQueue, QueueStatus } from '../../models/database.model';
+import { environment } from '../../../../../environments/environment';
+// Angular Material
+import { MatSnackBar } from '@angular/material/snack-bar';
+// Services
 import { SynchronizationService } from './synchronization.service';
 import { StorageService } from '../storage/storage.service';
-import { environment } from '../../../../../environments/environment';
 // Mocks
 import { materialModules } from '../../../../mocks/material-modules.mock';
 
@@ -23,7 +23,7 @@ export class StorageServiceMock {
 }
 describe('Core - Database - Service - Synchronization', () => {
     let storage: StorageService;
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         /**
          * Agit comme un NgModule, on déclare est importe ce qui est utilisé
          * dans le composant/Service/Pipe/etc et dans le test en lui même.

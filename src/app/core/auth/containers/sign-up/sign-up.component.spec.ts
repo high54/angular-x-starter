@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 // Components
 import { AuthSignUpComponent } from './sign-up.component';
@@ -14,7 +14,7 @@ describe('AuthSignUpComponent', () => {
   const password = 'password';
   const privacy = true;
   const notifications = true;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 // Components
 import { InstallUpdateComponent } from './install-update.component';
 // Mocks
@@ -8,7 +8,7 @@ describe('InstallUpdateComponent', () => {
   let component: InstallUpdateComponent;
   let fixture: ComponentFixture<InstallUpdateComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         ...materialModules

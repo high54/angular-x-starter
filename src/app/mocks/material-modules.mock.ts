@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -30,6 +31,7 @@ export const materialModules: any[] = [
     MatListModule,
     MatMenuModule,
     MatProgressBarModule,
+    MatRadioModule,
     MatSidenavModule,
     MatSlideToggleModule,
     MatSnackBarModule,

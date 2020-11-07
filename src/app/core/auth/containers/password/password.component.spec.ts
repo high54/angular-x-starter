@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 // Component
 import { AuthPasswordComponent } from './password.component';
@@ -10,7 +10,7 @@ describe('AuthPasswordComponent', () => {
   let fixture: ComponentFixture<AuthPasswordComponent>;
   const email = 'test@test.com';
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
