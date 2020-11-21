@@ -112,7 +112,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public changeTheme(): void {
     const { value } = this.themeForm;
     this.darkMode = value.theme;
-    localStorage.setItem('darkMode', value.theme.toString());
+    localStorage.setItem('darkMode', JSON.stringify(value.theme));
   }
   public changeLanguage(): void {
     const { value } = this.languageForm;
@@ -123,13 +123,11 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   private loadTheme(): void {
     if (this.isBrowser) {
-      const darkMode = localStorage.getItem('darkMode');
-      if (darkMode !== null) {
-        this.darkMode = darkMode === 'true';
-        this.themeForm.patchValue({
-          theme: darkMode === 'true'
-        });
-      }
+      const darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
+      this.darkMode = darkMode;
+      this.themeForm.patchValue({
+        theme: darkMode
+      });
     }
   }
   private trackingLocation(): void {
@@ -145,7 +143,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       } else {
         this.langague = navigator.language.split('-')[0] === 'fr' ? 'fr' : 'en';
         this.languageForm.patchValue({ language: this.langague });
-        if (this.langague !== this.getCurrentLanguage()) {
+        if (environment.production && this.langague !== this.getCurrentLanguage()) {
           this.redirect();
         }
 
