@@ -29,7 +29,7 @@ export class BreadcrumbComponent implements OnInit {
   public buildBreadcrumb(route: ActivatedRoute, url: string = '', breadcrumbs: IBreadcrumb[] = []): IBreadcrumb[] {
     // If no routeConfig is avalailable we are on the root path
     let label = route.routeConfig && route.routeConfig.data ? route.routeConfig.data.breadcrumb.label : '';
-    let path = route.routeConfig && route.routeConfig.data ? route.routeConfig.data.breadcrumb.url : '';
+    let path = route.routeConfig && route.routeConfig.data ? route.routeConfig.path : '';
 
     // If the route is dynamic route such as ':id', remove it
     const lastRoutePart = path.split('/').pop();

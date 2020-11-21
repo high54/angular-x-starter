@@ -80,7 +80,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
   }
-
   get matches(): boolean {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }

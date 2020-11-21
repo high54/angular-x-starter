@@ -9,10 +9,6 @@ const routes: Routes = [
     redirectTo: 'docs/presentation'
   },
   {
-    path: 'policies',
-    loadChildren: () => import('./modules/policies/policies.module').then((m) => m.PoliciesModule)
-  },
-  {
     path: 'docs',
     loadChildren: () => import('./modules/docs/docs.module').then((m) => m.DocsModule),
     data: {
