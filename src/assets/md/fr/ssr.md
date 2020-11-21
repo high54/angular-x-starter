@@ -1,6 +1,6 @@
 ## Server Side Rendering
 
-### Bloqué certaines fonctionnalités côté client
+### Bloquer certaines fonctionnalités côté client
 
 ``` typescript
 import { Component, PLATFORM_ID, Inject } from '@angular/core';
