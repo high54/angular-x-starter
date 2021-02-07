@@ -23,8 +23,6 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
-// Services
-import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
 // RxJs
 import { first } from 'rxjs/operators';
 import { interval, concat } from 'rxjs';
@@ -64,9 +62,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private router: Router,
-    private onlineOfflineService: OnlineOfflineService,
-    private storageService: StorageService,
-    private synchronizationService: SynchronizationService,
     @Inject(PLATFORM_ID) private platformId,
     private updates: SwUpdate,
     private appRef: ApplicationRef,
@@ -92,15 +87,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public ngOnInit(): void {
     if (this.isBrowser) {
       this.checkForUpdate();
-      this.onlineOfflineService.connectionChanged.subscribe((connection) => {
-        if (connection) {
-          this.storageService.openDB().then((isOpen: boolean) => {
-            if (isOpen) {
-              this.synchronizationService.sync();
-            }
-          });
-        }
-      });
     }
   }
   public ngOnDestroy(): void {

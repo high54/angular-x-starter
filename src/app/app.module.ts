@@ -5,15 +5,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 // Angular Material Module
 import { AppMaterialModule } from './app-material.module';
-// Authentication Module
-import { AuthModule } from './core/auth/auth.module';
-// Database Module
-import { DatabaseModule } from './core/database/database.module';
 // User Interface Module
 import { UIModule } from './core/ui/ui.module';
 // Components
@@ -33,8 +28,6 @@ import { MarkdownModule } from 'ngx-markdown';
     FormsModule,
     AppRoutingModule,
     AppMaterialModule,
-    AuthModule,
-    DatabaseModule,
     UIModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
