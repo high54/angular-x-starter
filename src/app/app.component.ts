@@ -54,6 +54,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     language: ''
   });
 
+  public documentLocation = document.location;
+  public windowLocation = window.location;
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
 
@@ -136,14 +138,14 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
   private createUrl(): string {
-    const [protocol, , host, , ...rest] = window.location.href.split('/');
+    const [protocol, , host, , ...rest] = this.windowLocation.href.split('/');
     return `${protocol}//${host}/${this.langague}/${rest.join('/')}`;
   }
   private redirect(): void {
-    window.location.replace(this.createUrl());
+    this.windowLocation.replace(this.createUrl());
   }
   private getCurrentLanguage(): string {
-    return window.location.href.split('/')[3];
+    return this.windowLocation.href.split('/')[3];
   }
 
   private loader(): void {
@@ -178,7 +180,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
           });
           dialogRef.afterClosed().subscribe((install) => {
             if (install) {
-              document.location.reload();
+              this.documentLocation.reload();
             }
           });
         });

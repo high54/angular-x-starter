@@ -4,6 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwUpdate, UpdateAvailableEvent, UpdateActivatedEvent } from '@angular/service-worker';
 import { Router, NavigationError, ActivatedRoute } from '@angular/router';
+import { ElementRef, NO_ERRORS_SCHEMA } from '@angular/core';
 // Components
 import { AppComponent } from './app.component';
 import * as fromUIComponents from './core/ui/components';
@@ -12,11 +13,8 @@ import { materialModules } from './mocks/material-modules.mock';
 // Rxjs
 import { of } from 'rxjs';
 import { Observable, Subject } from 'rxjs';
-// Services
-import { OnlineOfflineService, StorageService, SynchronizationService } from './core/database/services';
 // Angular Material
 import { MatDialog } from '@angular/material/dialog';
-import { ElementRef } from '@angular/core';
 import { MatSidenavContent } from '@angular/material/sidenav';
 
 export class SwUpdateServerMock {
@@ -31,21 +29,6 @@ export class SwUpdateServerMock {
     return new Promise((resolve) => resolve());
   }
 }
-export class StorageServiceMock {
-  public openDB(): Promise<boolean> {
-    return new Promise((resolve) => {
-      resolve(true);
-    });
-  }
-}
-
-const onlineOfflineService = {
-  connectionChanged: of((true))
-};
-const synchronizationService = {
-  sync: () => ({})
-};
-
 const routerMock = {
   navigateByUrl: (params: string) => { },
   navigate: (params: string[]) => { },
@@ -59,8 +42,8 @@ const dialogMock = {
     afterClosed: () => of(false)
   })
 };
-
 describe('AppComponent', () => {
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -73,17 +56,18 @@ describe('AppComponent', () => {
         AppComponent,
         ...fromUIComponents.components
       ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ],
       providers: [
         { provide: SwUpdate, useClass: SwUpdateServerMock },
         { provide: Router, useValue: routerMock },
-        { provide: OnlineOfflineService, useValue: onlineOfflineService },
-        { provide: StorageService, useClass: StorageServiceMock },
-        { provide: SynchronizationService, useValue: synchronizationService },
         { provide: ActivatedRoute, useValue: {} },
         { provide: MatDialog, useValue: dialogMock }
       ]
     }).compileComponents();
   }));
+
   afterAll(() => {
     TestBed.resetTestingModule();
   });
@@ -113,7 +97,34 @@ describe('AppComponent', () => {
     app.isBrowser = false;
     app.ngAfterViewInit();
   }));
-
+  it(`Trigger ngAfterViewInit`, waitForAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.isBrowser = true;
+    app.documentLocation = {
+      reload: () => { }
+    } as any;
+    app.windowLocation = {
+      replace: () => { },
+      href: 'http://test.com/tests'
+    } as any;
+    localStorage.removeItem('language');
+    app.ngAfterViewInit();
+  }));
+  it(`Trigger ngAfterViewInit`, waitForAsync(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.isBrowser = true;
+    localStorage.setItem('language', 'en');
+    app.documentLocation = {
+      reload: () => { }
+    } as any;
+    app.windowLocation = {
+      replace: () => { },
+      href: 'http://test.com/tests'
+    } as any;
+    app.ngAfterViewInit();
+  }));
   it('changeTheme to darkmode', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
@@ -125,7 +136,20 @@ describe('AppComponent', () => {
     expect((localStorage.getItem('darkMode') === 'true')).toBeTrue();
   });
 
+  it('change language', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.languageForm.get('language').setValue('FR');
+    app.documentLocation = {
+      reload: () => { }
+    } as any;
+    app.windowLocation = {
+      replace: () => { },
+      href: 'http://test.com/tests'
+    } as any;
+    app.changeLanguage();
 
+  });
 
   it(`get matches`, () => {
     const fixture = TestBed.createComponent(AppComponent);
