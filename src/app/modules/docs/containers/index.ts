@@ -5,7 +5,6 @@ import { ServerSideRenderingComponent } from './server-side-rendering/server-sid
 import { SearchEngineOptimizationComponent } from './search-engine-optimization/search-engine-optimization.component';
 import { InternationalizationComponent } from './internationalization/internationalization.component';
 import { AccessibilityComponent } from './accessibility/accessibility.component';
-import { OfflineSyncComponent } from './offline-sync/offline-sync.component';
 import { ResponsiveDesignComponent } from './responsive-design/responsive-design.component';
 import { DarkModeComponent } from './dark-mode/dark-mode.component';
 
@@ -17,7 +16,6 @@ export const containers: any[] = [
     SearchEngineOptimizationComponent,
     InternationalizationComponent,
     AccessibilityComponent,
-    OfflineSyncComponent,
     ResponsiveDesignComponent,
     DarkModeComponent
 ];
@@ -29,6 +27,5 @@ export * from './server-side-rendering/server-side-rendering.component';
 export * from './search-engine-optimization/search-engine-optimization.component';
 export * from './internationalization/internationalization.component';
 export * from './accessibility/accessibility.component';
-export * from './offline-sync/offline-sync.component';
 export * from './responsive-design/responsive-design.component';
 export * from './dark-mode/dark-mode.component';

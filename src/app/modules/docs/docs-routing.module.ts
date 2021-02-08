@@ -80,16 +80,6 @@ const routes: Routes = [
         }
     },
     {
-        path: 'offline-sync',
-        component: fromContainers.OfflineSyncComponent,
-        data: {
-            breadcrumb: {
-                label: 'Offline Synchronization',
-                url: 'offline-sync'
-            }
-        }
-    },
-    {
         path: 'responsive-design',
         component: fromContainers.ResponsiveDesignComponent,
         data: {
