@@ -54,8 +54,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     language: ''
   });
 
-  public documentLocation = document.location;
-  public windowLocation = window.location;
+  public documentLocation = isPlatformBrowser(this.platformId) ? document.location : null;
+  public windowLocation = isPlatformBrowser(this.platformId) ? window.location : null;
   private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
 
