@@ -1,20 +1,21 @@
-## Démarrer
+## Getting started
 
 ### Assumptions
 
-Cette documentation considère que vous êtes déjà famillier avec Angular, HTML, CSS, JavaScript, et les derniers standars, comme les classes et modules. Les exemples de code sont écrit en TypeScript. La plus grande partie du code peut être écrit avec la dernière version de JavaScript, avec les types pour l'injection de dépendance et les décorateurs pour les métadonnées. 
+These docs assume that you are already familiar with Angular, HTML, CSS, JavaScript, and some of the tools from the latest standards, such as classes and modules. The code samples are written using TypeScript. Most Angular code can be written with just the latest JavaScript, using types for dependency injection and using decorators for metadata.
+
 
 ### Architecture
 
-L'application est composé de deux ensembles principaux :
+L'application est composé de deux ensemble principaux :
 
 - Core
 - Modules
 
 
-La partie **Core**  correspond à des fonctionnalités qui sont essentiel au bon fonctionnement de l'application. Ils seront chargé au démarrage de l'application.
+La partie **Core**  correspond à des modules de fonctionnalités qui sont essentiel au bon fonctionnement de l'application. Ils seront chargé au démarrage de l'application.
 
-La partie **Modules** correspond à des fonctionnaltiés qui peuvent être chargé paresseusement en fonction du niveau d'accès ou de l'utilisation. VOus pouvez consulter la section dédiée au chargement paresseux pour en savoir plus à ce sujet.
+La partie **Modules** correspond à des fonctionnaltiés qui peuvent être chargé paresseusement en fonction du niveau d'accès ou de l'utilisation.
 
 Chacune des fonctionnalités à sont identité propre. Elle est autonome est indépendante des autres fonctionnalité pour garantire l'évolution de l'application et éviter du code spaghetti.
 Cela permet également le transfert d'un module d'une application à l'autre. En some, chaque fonctionnalité est une application dans l'application que l'on raccordre via une route. C'est comparable à des micro services qui sont servit par une gateway.
