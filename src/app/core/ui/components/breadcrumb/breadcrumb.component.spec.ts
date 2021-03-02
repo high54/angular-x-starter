@@ -17,11 +17,53 @@ describe('BreadcrumbComponent', () => {
       routeConfig: {
         data: {
           breadcrumb: {
-            label: '',
-            url: 'test/test/test'
+            label: 'test-url_test',
+            url: 'http://test/test/test'
           }
-        }
+        },
+        path: 'test/test/test'
       },
+      snapshot: {
+        params: [
+          'test'
+        ]
+      }
+    }
+  };
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        ...materialModules
+      ],
+      declarations: [BreadcrumbComponent],
+      providers: [
+        { provide: Router, useValue: router },
+        { provide: ActivatedRoute, useValue: activatedRoute }
+      ]
+    })
+      .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BreadcrumbComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+describe('BreadcrumbComponent without routeConfig data', () => {
+  let component: BreadcrumbComponent;
+  let fixture: ComponentFixture<BreadcrumbComponent>;
+  const router = {
+    events: of(new NavigationEnd(1, '', ''))
+  };
+  const activatedRoute = {
+    root: {
       snapshot: {
         params: [
           'test'

@@ -91,13 +91,13 @@ describe('AppComponent', () => {
     expect(app.scrollContent.getElementRef().nativeElement.scrollTop).toBe(10);
   });
 
-  it(`Trigger ngAfterViewInit`, waitForAsync(() => {
+  it(`Trigger ngAfterViewInit in platform server`, waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.isBrowser = false;
     app.ngAfterViewInit();
   }));
-  it(`Trigger ngAfterViewInit`, waitForAsync(() => {
+  it(`Trigger ngAfterViewInit in platform browser`, waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.isBrowser = true;
@@ -111,7 +111,7 @@ describe('AppComponent', () => {
     localStorage.removeItem('language');
     app.ngAfterViewInit();
   }));
-  it(`Trigger ngAfterViewInit`, waitForAsync(() => {
+  it(`Trigger ngAfterViewInit in platform browser with local state for language`, waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     app.isBrowser = true;

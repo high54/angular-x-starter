@@ -81,7 +81,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }
   public ngAfterViewInit(): void {
-    this.trackingLocation();
     this.loadTheme();
     this.loader();
   }
@@ -117,26 +116,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       });
     }
   }
-  private trackingLocation(): void {
-    if (this.isBrowser) {
-      const language = localStorage.getItem('language');
-      if (language !== null) {
-        this.langague = language;
-        if (language !== this.getCurrentLanguage()) {
-          this.redirect();
-        }
-        this.languageForm.patchValue({ language });
 
-      } else {
-        this.langague = navigator.language.split('-')[0] === 'fr' ? 'fr' : 'en';
-        this.languageForm.patchValue({ language: this.langague });
-        if (environment.production && this.langague !== this.getCurrentLanguage()) {
-          this.redirect();
-        }
-
-      }
-    }
-  }
   private createUrl(): string {
     const [protocol, , host, , ...rest] = this.windowLocation.href.split('/');
     return `${protocol}//${host}/${this.langague}/${rest.join('/')}`;
@@ -144,9 +124,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   private redirect(): void {
     this.windowLocation.replace(this.createUrl());
   }
-  private getCurrentLanguage(): string {
-    return this.windowLocation.href.split('/')[3];
-  }
+
 
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
