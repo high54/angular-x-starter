@@ -131,7 +131,7 @@ describe('AppComponent', () => {
     const darkMode = false;
     localStorage.setItem('darkMode', darkMode.toString());
     app.darkMode = darkMode;
-    app.themeForm.get('theme').setValue(true);
+    app.themeForm.get('theme')?.setValue(true);
     app.changeTheme();
     expect((localStorage.getItem('darkMode') === 'true')).toBeTrue();
   });
@@ -139,7 +139,7 @@ describe('AppComponent', () => {
   it('change language', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    app.languageForm.get('language').setValue('FR');
+    app.languageForm.get('language')?.setValue('FR');
     app.documentLocation = {
       reload: () => { }
     } as any;

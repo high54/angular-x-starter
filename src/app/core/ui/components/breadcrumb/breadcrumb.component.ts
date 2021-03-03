@@ -10,7 +10,7 @@ import { IBreadcrumb } from '../../interfaces/breadcrumb.interface';
   templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent implements OnInit {
-  public breadcrumbs: IBreadcrumb[];
+  public breadcrumbs!: IBreadcrumb[];
 
   constructor(
     private router: Router,
@@ -33,10 +33,12 @@ export class BreadcrumbComponent implements OnInit {
 
     // If the route is dynamic route such as ':id', remove it
     const lastRoutePart = path ? path.split('/').pop() : '';
-    const isDynamicRoute = lastRoutePart.startsWith(':');
+    const isDynamicRoute = lastRoutePart ? lastRoutePart.startsWith(':') : undefined;
     if (isDynamicRoute && !!route.snapshot) {
       const paramName = lastRoutePart ? lastRoutePart.split(':')[1] : '';
-      path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
+      if (lastRoutePart) {
+        path = path ? path.replace(lastRoutePart, route.snapshot.params[paramName]) : '';
+      }
       label += route.snapshot.params[paramName];
     }
 

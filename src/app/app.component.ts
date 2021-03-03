@@ -7,7 +7,8 @@ import {
   ViewChild,
   PLATFORM_ID,
   Inject,
-  ApplicationRef
+  ApplicationRef,
+  InjectionToken
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public progressMode = 'indeterminate';
   public isBrowser = false;
   public darkMode = false;
-  public langague: string;
+  public langague!: string;
   public themeForm = this.fb.group({
     theme: [false]
   });
@@ -56,15 +57,15 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public documentLocation = isPlatformBrowser(this.platformId) ? document.location : null;
   public windowLocation = isPlatformBrowser(this.platformId) ? window.location : null;
-  private mobileQuery: MediaQueryList;
-  private mobileQueryListener: () => void;
+  private mobileQuery!: MediaQueryList;
+  private mobileQueryListener!: () => void;
 
   constructor(
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId,
+    @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
     private updates: SwUpdate,
     private appRef: ApplicationRef,
     private fb: FormBuilder
@@ -80,16 +81,17 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   get matches(): boolean {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }
-  public ngAfterViewInit(): void {
-    this.loadTheme();
-    this.loader();
-  }
-
   public ngOnInit(): void {
     if (this.isBrowser) {
       this.checkForUpdate();
     }
   }
+  public ngAfterViewInit(): void {
+    this.loadTheme();
+    this.loader();
+  }
+
+
   public ngOnDestroy(): void {
     if (this.isBrowser) {
       this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
@@ -104,12 +106,15 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     const { value } = this.languageForm;
     this.langague = value.language;
     localStorage.setItem('language', this.langague);
-    this.redirect();
+    if (this.windowLocation !== null) {
+      this.redirect();
+    }
 
   }
   private loadTheme(): void {
     if (this.isBrowser) {
-      const darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
+      const darkModeStored = localStorage.getItem('darkMode');
+      const darkMode = darkModeStored ? JSON.parse(darkModeStored) : false;
       this.darkMode = darkMode;
       this.themeForm.patchValue({
         theme: darkMode
@@ -117,12 +122,13 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  private createUrl(): string {
-    const [protocol, , host, , ...rest] = this.windowLocation.href.split('/');
-    return `${protocol}//${host}/${this.langague}/${rest.join('/')}`;
-  }
+
   private redirect(): void {
-    this.windowLocation.replace(this.createUrl());
+    if (this.windowLocation !== null) {
+      const [protocol, , host, , ...rest] = this.windowLocation.href.split('/');
+      const newLocation = `${protocol}//${host}/${this.langague}/${rest.join('/')}`;
+      this.windowLocation.replace(newLocation);
+    }
   }
 
 
@@ -157,7 +163,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
             width: '250px',
           });
           dialogRef.afterClosed().subscribe((install) => {
-            if (install) {
+            if (install && this.documentLocation !== null) {
               this.documentLocation.reload();
             }
           });
