@@ -18,10 +18,6 @@
         <mat-icon>settings_brightness</mat-icon>
         Apparence : {{ darkMode ? 'Thème foncé' : 'Thème clair'}}
       </button>
-      <button mat-menu-item [matMenuTriggerFor]="langagues">
-        <mat-icon>translate</mat-icon>
-        Langues : {{ langague === 'en' ? 'english' : 'français'}}
-      </button>
     </mat-menu>
 
     <mat-menu #themes="matMenu">
@@ -36,19 +32,6 @@
         </mat-radio-group>
       </form>
 
-    </mat-menu>
-
-    <mat-menu #langagues="matMenu">
-      <form [formGroup]="languageForm">
-        <mat-radio-group (change)="changeLanguage()" formControlName="language" class="example-radio-group">
-          <mat-radio-button [value]="'en'" class="example-radio-button">
-            English (UK)
-          </mat-radio-button>
-          <mat-radio-button [value]="'fr'" class="example-radio-button">
-            Français
-          </mat-radio-button>
-        </mat-radio-group>
-      </form>
     </mat-menu>
   </mat-toolbar>
 

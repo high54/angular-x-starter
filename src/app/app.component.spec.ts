@@ -104,25 +104,6 @@ describe('AppComponent', () => {
     app.documentLocation = {
       reload: () => { }
     } as any;
-    app.windowLocation = {
-      replace: () => { },
-      href: 'http://test.com/tests'
-    } as any;
-    localStorage.removeItem('language');
-    app.ngAfterViewInit();
-  }));
-  it(`Trigger ngAfterViewInit in platform browser with local state for language`, waitForAsync(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    app.isBrowser = true;
-    localStorage.setItem('language', 'en');
-    app.documentLocation = {
-      reload: () => { }
-    } as any;
-    app.windowLocation = {
-      replace: () => { },
-      href: 'http://test.com/tests'
-    } as any;
     app.ngAfterViewInit();
   }));
   it('changeTheme to darkmode', () => {
@@ -134,21 +115,6 @@ describe('AppComponent', () => {
     app.themeForm.get('theme')?.setValue(true);
     app.changeTheme();
     expect((localStorage.getItem('darkMode') === 'true')).toBeTrue();
-  });
-
-  it('change language', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    app.languageForm.get('language')?.setValue('FR');
-    app.documentLocation = {
-      reload: () => { }
-    } as any;
-    app.windowLocation = {
-      replace: () => { },
-      href: 'http://test.com/tests'
-    } as any;
-    app.changeLanguage();
-
   });
 
   it(`get matches`, () => {

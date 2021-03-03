@@ -54,12 +54,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     theme: [false]
   });
 
-  public languageForm = this.fb.group({
-    language: ''
-  });
-
   public documentLocation = isPlatformBrowser(this.platformId) ? document.location : null;
-  public windowLocation = isPlatformBrowser(this.platformId) ? window.location : null;
   private mobileQuery!: MediaQueryList;
   private mobileQueryListener!: () => void;
 
@@ -108,15 +103,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     localStorage.setItem('darkMode', JSON.stringify(value.theme));
   }
 
-  public changeLanguage(): void {
-    const { value } = this.languageForm;
-    this.langague = value.language;
-    localStorage.setItem('language', this.langague);
-    if (this.windowLocation !== null) {
-      this.redirect();
-    }
-  }
-
   private loadTheme(): void {
     if (this.isBrowser) {
       const darkModeStored = localStorage.getItem('darkMode');
@@ -125,14 +111,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       this.themeForm.patchValue({
         theme: darkMode
       });
-    }
-  }
-
-  private redirect(): void {
-    if (this.windowLocation !== null) {
-      const [protocol, , host, , ...rest] = this.windowLocation.href.split('/');
-      const newLocation = `${protocol}//${host}/${this.langague}/${rest.join('/')}`;
-      this.windowLocation.replace(newLocation);
     }
   }
 

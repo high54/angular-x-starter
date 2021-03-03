@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve -o --configuration=fr",
     "build": "ng build",
-    "build:prod": "ng build --prod --aot --build-optimizer",
+    "build:prod": "ng build --prod --aot --build-optimizer --localize=false",
     "test": "ng test --code-coverage",
     "test:ci": "ng test --code-coverage --watch=false",
     "lint": "ng lint",
@@ -13,7 +13,7 @@
     "sonar": "sonar-scanner",
     "dev:ssr": "ng run angular-x-starter:serve-ssr -o",
     "serve:ssr": "node dist/angular-x-starter/server/main.js",
-    "build:ssr": "ng build --prod && ng run angular-x-starter:server:production",
+    "build:ssr": "ng build --prod --aot --build-optimizer --localize=false && ng run angular-x-starter:server:production",
     "prerender": "ng run angular-x-starter:prerender"
   },
   "private": true,
