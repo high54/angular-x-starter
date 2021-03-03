@@ -15,6 +15,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
-  }
+    ],
+    "strict":true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "angularCompilerOptions": {
+      "strictInjectionParameters": true,
+      "strictInputAccessModifiers": true,
+      "strictTemplates": true
+    }
 }
