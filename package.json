@@ -9,7 +9,7 @@
     "test": "ng test --code-coverage",
     "test:ci": "ng test --code-coverage --watch=false",
     "lint": "ng lint",
-    "e2e": "ng e2e --configuration=en",
+    "e2e": "ng e2e",
     "sonar": "sonar-scanner",
     "dev:ssr": "ng run angular-x-starter:serve-ssr -o",
     "serve:ssr": "node dist/angular-x-starter/server/main.js",

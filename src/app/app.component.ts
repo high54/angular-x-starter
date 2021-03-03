@@ -29,6 +29,7 @@ import { first } from 'rxjs/operators';
 import { interval, concat } from 'rxjs';
 // Angular Material
 import { MatDialog } from '@angular/material/dialog';
+import { ProgressBarMode } from '@angular/material/progress-bar';
 // Components
 import { InstallUpdateComponent } from './core/ui/components';
 
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public title = $localize`:Application name:${environment.appName}`;
   public btnAriaLabelSideNav = ':Button toggle side nav:Open side navigation';
   public btnAriaLabelToggleDarkMode = ':Button toggle dark mode:Activate dark mode';
-  public progressMode = 'indeterminate';
+  public progressMode: ProgressBarMode = 'indeterminate';
   public isBrowser = false;
   public darkMode = false;
   public langague!: string;

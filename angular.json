@@ -148,7 +148,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-x-starter:serve"
+            "devServerTarget": "angular-x-starter:serve:fr"
           },
           "configurations": {
             "production": {
