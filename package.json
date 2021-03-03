@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --configuration=fr",
     "build": "ng build",
     "build:prod": "ng build --prod --aot --build-optimizer",
     "test": "ng test --code-coverage",

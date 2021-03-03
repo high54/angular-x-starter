@@ -39,6 +39,7 @@ import { InstallUpdateComponent } from './core/ui/components';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+
   @ViewChild('scrollContent', { static: true }) public scrollContent !: MatSidenavContent;
 
   public title = $localize`:Application name:${environment.appName}`;
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   public isBrowser = false;
   public darkMode = false;
   public langague!: string;
+
   public themeForm = this.fb.group({
     theme: [false]
   });
@@ -66,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
+    @Inject(PLATFORM_ID) private platformId: InjectionToken<string>,
     private updates: SwUpdate,
     private appRef: ApplicationRef,
     private fb: FormBuilder
@@ -77,32 +79,35 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       this.mobileQueryListener = () => this.changeDetectorRef.detectChanges();
       this.mobileQuery.addEventListener('change', this.mobileQueryListener);
     }
-
   }
+
   get matches(): boolean {
     return this.isBrowser ? this.mobileQuery.matches : true;
   }
+
   public ngOnInit(): void {
     if (this.isBrowser) {
       this.checkForUpdate();
     }
   }
+
   public ngAfterViewInit(): void {
     this.loadTheme();
     this.loader();
   }
-
 
   public ngOnDestroy(): void {
     if (this.isBrowser) {
       this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
     }
   }
+
   public changeTheme(): void {
     const { value } = this.themeForm;
     this.darkMode = value.theme;
     localStorage.setItem('darkMode', JSON.stringify(value.theme));
   }
+
   public changeLanguage(): void {
     const { value } = this.languageForm;
     this.langague = value.language;
@@ -110,8 +115,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.windowLocation !== null) {
       this.redirect();
     }
-
   }
+
   private loadTheme(): void {
     if (this.isBrowser) {
       const darkModeStored = localStorage.getItem('darkMode');
@@ -123,7 +128,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-
   private redirect(): void {
     if (this.windowLocation !== null) {
       const [protocol, , host, , ...rest] = this.windowLocation.href.split('/');
@@ -131,7 +135,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       this.windowLocation.replace(newLocation);
     }
   }
-
 
   private loader(): void {
     this.router.events.subscribe((event: Event) => {
@@ -152,6 +155,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     });
   }
+
   private checkForUpdate(): void {
     if (this.updates.isEnabled) {
       const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
@@ -170,8 +174,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
           });
         });
       });
-
     }
-
   }
 }

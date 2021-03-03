@@ -9,8 +9,8 @@ describe('AppService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: Meta, useValue: { addTag: (params?:any) => { }, removeTag: (params?:any) => { }, addTags: (params?:any) => { } } },
-        { provide: Title, useValue: { setTitle: (params?:any) => { } } }
+        { provide: Meta, useValue: { addTag: (params?: any) => { }, removeTag: (params?: any) => { }, addTags: (params?: any) => { } } },
+        { provide: Title, useValue: { setTitle: (params?: any) => { } } }
       ]
     });
     service = TestBed.inject(AppService);
