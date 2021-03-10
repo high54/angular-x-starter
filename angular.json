@@ -81,9 +81,7 @@
               "ngswConfigPath": "ngsw-config.json"
             },
             "fr": {
-              "localize": [
-                "fr"
-              ]
+              "localize": ["fr"]
             }
           }
         },
@@ -138,10 +136,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "e2e": {
@@ -195,9 +190,7 @@
           "options": {
             "browserTarget": "angular-x-starter:build:production",
             "serverTarget": "angular-x-starter:server:production",
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {}
